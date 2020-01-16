@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./out",
+    "declaration": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitThis": false,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "out"
+  ]
+}

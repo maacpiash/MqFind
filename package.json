@@ -1,0 +1,30 @@
+{
+  "name": "@mq-housing/server",
+  "version": "1.0.0",
+  "description": "Query and sort listings of available housing options posted on MqU's website",
+  "main": "index.js",
+  "repository": "https://github.com/maacpiash/mq-housing",
+  "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "lerna run --parallel build",
+    "lint": "lerna run --parallel lint",
+    "start": "lerna run --parallel start"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "lerna": "^3.20.2",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  }
+}

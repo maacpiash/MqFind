@@ -1,0 +1,19 @@
+{
+  "name": "@mq-housing/client",
+  "version": "1.0.0",
+  "description": "Client-side software for @mq-housing, the React.js app",
+  "main": "index.js",
+  "repository": "https://github.com/maacpiash/mq-housing",
+  "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
