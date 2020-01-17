@@ -1,26 +1,10 @@
-export interface IAccommodation {
-  title: string
-  description: string
-  photoLink: string
-  vacancy: number
-  leaseDetails: ILeaseDetails
-  bedroomNumber: number
-  bedrooms: IBedroom[]
-  heatingCooling: string[]
-  wheelchairAccess: boolean
-  bathroomNumber: number
-  bedroomFurnishing: string
-  houseFurnishing: string
-  hasInternet: boolean
-  cantSmoke: boolean
-  safety: string[]
-  bills: string
-  utilities: string[]
-  noPets: boolean
-  prefGender: string[]
-  shortStay: boolean
-  commonAreasAccess: string[]
-  link: string
+import { HousingOptions, CampusNames } from './constants'
+
+export interface IBedroom {
+  vacancyType: string
+  weeklyRate: number
+  bond: number
+  availableFrom: Date
 }
 
 export interface ILeaseDetails {
@@ -29,9 +13,11 @@ export interface ILeaseDetails {
   leaseType: string
 }
 
-export interface IBedroom {
-  vacancyType: string
-  weeklyRate: number
-  bond: number
-  availableFrom: Date
+export default interface IQuery {
+  housingOption: HousingOptions
+  campusName: CampusNames
+  maxRent: number
+  bathroom: number | undefined
+  leasMin: number | undefined
+  leaseMax: number | undefined
 }

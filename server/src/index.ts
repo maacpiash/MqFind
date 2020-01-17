@@ -1,6 +1,6 @@
 import GetDetails from './services'
 import { HousingOptions, CampusNames } from './models/constants'
-import IQuery from './models/query'
+import IQuery from './models/interfaces'
 
 const query: IQuery = {
   housingOption: HousingOptions.Rooms,

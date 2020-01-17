@@ -1,11 +1,41 @@
 import { delimeter, scrapedKeys, WTF } from './constants'
 import { IDictionary } from './types'
-import { IAccommodation, IBedroom, ILeaseDetails } from './interfaces'
+import { IBedroom, ILeaseDetails } from './interfaces'
 
-export class Accommodation implements IAcommodation {
-  constructor(title: string, values: string[]) {
+export class Accommodation {
+  title: string
+  description: string
+  photoLink: string
+  vacancy: number
+  leaseDetails: ILeaseDetails
+  bedroomNumber: number
+  bedrooms: IBedroom[]
+  heatingCooling: string[]
+  wheelchairAccess: boolean
+  bathroomNumber: number
+  bedroomFurnishing: string
+  houseFurnishing: string
+  hasInternet: boolean
+  cantSmoke: boolean
+  safety: string[]
+  bills: string
+  utilities: string[]
+  noPets: boolean
+  prefGender: string[]
+  shortStay: boolean
+  commonAreasAccess: string[]
+  link: string
+
+  constructor(
+    title: string,
+    values: string[],
+    link: string,
+    photoLink: string,
+  ) {
     this.title = title
     this.description = ''
+    this.link = link
+    this.photoLink = photoLink
     const dict: IDictionary<string[]> = {}
     let k = 0
     for (let i = 0; i < values.length; i++) {

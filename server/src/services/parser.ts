@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import { Accommodation } from '../models/accommodation'
-// import cleanup from './cleanup'
 
 export default async function getPageParsed(url: string): Promise<any> {
   const content = await axios(url)
@@ -14,9 +13,9 @@ export default async function getPageParsed(url: string): Promise<any> {
       const text = $(item).text()
       if (text) tds.push(text.trim())
     })
-  const accommodation = new Accommodation('TITLE', tds)
-  const photoLink = $('div.listing-cover-photo > img').attr('src') || false
-  if (photoLink) accommodation.photoLink = 'https:' + photoLink
+  let photoLink = $('div.listing-cover-photo > img').attr('src') || ''
+  if (photoLink) photoLink = 'https:' + photoLink
+  const accommodation = new Accommodation('TITLE', tds, url, photoLink)
   accommodation.link = url
   return accommodation
 }

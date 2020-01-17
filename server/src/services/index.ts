@@ -1,6 +1,6 @@
 import GetListingLinks from './listings'
-import FilterListings from './filter'
-import IQuery from '../models/query'
+import FilterListings from './parser'
+import IQuery from '../models/interfaces'
 
 export default function getListings(query: IQuery): Promise<any> {
   const { housingOption, campusName, maxRent } = query
