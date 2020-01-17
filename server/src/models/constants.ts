@@ -35,3 +35,5 @@ export const scrapedKeys: string[] = [
 export const delimeter = '\n\t\t\t\t\t\t'
 
 export const WTF = '(No data found)'
+
+export const OptionsPerPage = 12

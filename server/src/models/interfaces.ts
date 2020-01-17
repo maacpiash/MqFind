@@ -8,7 +8,7 @@ export interface IBedroom {
 }
 
 export interface ILeaseDetails {
-  maxLease: number | undefined
+  maxLease?: number
   minLease: number
   leaseType: string
 }
@@ -17,7 +17,7 @@ export default interface IQuery {
   housingOption: HousingOptions
   campusName: CampusNames
   maxRent: number
-  bathroom: number | undefined
-  leasMin: number | undefined
-  leaseMax: number | undefined
+  bathroom?: number
+  leasMin?: number
+  leaseMax?: number
 }
