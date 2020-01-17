@@ -1,9 +1,11 @@
+import moment from 'moment-timezone'
 import { delimeter, scrapedKeys, WTF } from './constants'
 import { IDictionary } from './types'
 import { IBedroom, ILeaseDetails } from './interfaces'
 
 export class Accommodation {
   title: string
+  suburb: string
   description: string
   photoLink: string
   vacancy: number
@@ -21,19 +23,22 @@ export class Accommodation {
   bills: string
   utilities: string[]
   noPets: boolean
-  prefGender: string[]
+  prefGender: string[] = []
   shortStay: boolean
   commonAreasAccess: string[]
   link: string
 
   constructor(
     title: string,
+    suburb: string,
+    description: string,
     values: string[],
     link: string,
     photoLink: string,
   ) {
     this.title = title
-    this.description = ''
+    this.suburb = suburb
+    this.description = description
     this.link = link
     this.photoLink = photoLink
     const dict: IDictionary<string[]> = {}
@@ -85,9 +90,10 @@ export class Accommodation {
       const firstLine = bedroom[0].split(' ') // ['Single', '-', '$230', '/', 'week']
       const vacancyType = firstLine[0]
       const weeklyRate = Number(firstLine[2].substr(1))
-      console.log('BOND', Number(bedroom[1].split('$')))
-      const bond = 0 // Number(bedroom[1].split('$')[1] ?? '0')
-      const availableFrom = new Date(bedroom[2].substr(10))
+      const bond = Number(bedroom[1].split('$')[1] ?? '0')
+      const availableFrom = moment
+        .tz(new Date(bedroom[2].substr(10)), 'Australia/Sydney')
+        .toDate()
       this.bedrooms.push({
         vacancyType,
         weeklyRate,
@@ -100,26 +106,20 @@ export class Accommodation {
     this.bathroomNumber = Number(dict['Bathrooms']?.[0] ?? '0')
     this.bedroomFurnishing = dict['Bedroom Furnishing']?.[0] ?? WTF
     this.houseFurnishing = dict['House Furnishing']?.[0] ?? WTF
-    this.hasInternet = dict['Internet Available'][0] === 'Yes'
-    this.heatingCooling = dict['Heating/Cooling'][0]?.split(', ') ?? []
-    this.wheelchairAccess = dict['Wheelchair accessible?'][0] === 'Yes'
-    this.cantSmoke = dict['Smoking'][0] === 'Not permitted'
+    this.hasInternet = dict['Internet Available']?.[0] === 'Yes'
+    this.heatingCooling = dict['Heating/Cooling']?.[0]?.split(', ') ?? []
+    this.wheelchairAccess = dict['Wheelchair accessible?']?.[0] === 'Yes'
+    this.cantSmoke = dict['Smoking']?.[0] === 'Not permitted'
     this.safety = dict['Safety'][0]?.split(', ') ?? []
-    this.bills = dict['Bills'][0] ?? WTF
-    this.utilities = dict['Utilities'][0].split(', ')
-    this.noPets = dict['Animals / Pets'][0] === 'Not Allowed'
-    const gender = dict['Preferred Gender'][0]
-    switch (gender) {
-      case 'Male or Female':
-        this.prefGender = ['F', 'M']
-        break
-      case 'Female':
-        this.prefGender = ['F']
-      default:
-        this.prefGender = []
-        break
-    }
-    this.shortStay = dict['Short Stay Option'][0] !== 'Short Stay Not Available'
-    this.commonAreasAccess = dict['Common Areas Accessible'][0].split(', ')
+    this.bills = dict['Included Bills']?.[0] ?? WTF
+    this.utilities = dict['Utilities']?.[0].split(', ') ?? []
+    this.noPets = dict['Animals / Pets']?.[0] === 'Not Allowed'
+    const gender = dict['Preferred Gender']?.[0] ?? []
+    if (gender.includes('Female')) this.prefGender.push('F')
+    if (gender.includes('Male')) this.prefGender.push('M')
+    this.shortStay =
+      dict['Short Stay Option']?.[0] !== 'Short Stay Not Available'
+    this.commonAreasAccess =
+      dict['Common Areas Accessible']?.[0].split(', ') ?? []
   }
 }
