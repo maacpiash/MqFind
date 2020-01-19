@@ -4,7 +4,7 @@ import { Accommodation } from '../models/accommodation'
 
 export default async function getPageParsed(url: string): Promise<any> {
   const content = await axios(url)
-  if (!content || !content.data) return []
+  if (!content || !content.data) return {}
   const tds: string[] = []
   const $ = load(content.data)
   $('tbody > tr > td')

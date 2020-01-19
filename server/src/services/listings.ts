@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { load } from 'cheerio'
+import { IResponse } from '../models/interfaces'
 import { BASE_URL, CampusNames, HousingOptions } from '../models/constants'
-import { IDictionary } from '../models/types'
 
 const queryUrl = BASE_URL + '/Listings/Search?'
 
@@ -46,21 +46,18 @@ export default async function getPageParsed(
   house: string,
   campus: string,
   max: number,
-  pageNumber?: number,
-): Promise<any> {
-  const baseUrl = urlBuilder(house, campus, max, pageNumber)
+  pageNum?: number,
+): Promise<IResponse> {
+  const baseUrl = urlBuilder(house, campus, max, pageNum)
   const $ = await parsePage(baseUrl)
-  const data: IDictionary<string[] | number> = {}
   const numberOfOptions = Number(
     $('div.mb-3 > strong')
       .text()
       .split(' ')[0],
   )
-  data['numberOfOptions'] = numberOfOptions
-  data['pageNumber'] = pageNumber ?? 1
+  const pageNumber = pageNum ?? 1
   const links: string[] = getUrls($)
-  data['links'] = links
-  return data
+  return { numberOfOptions, pageNumber, links } as IResponse
 }
 
 function getUrls(pageContent: CheerioStatic): string[] {

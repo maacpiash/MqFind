@@ -13,7 +13,13 @@ export interface ILeaseDetails {
   leaseType: string
 }
 
-export default interface IQuery {
+export interface IResponse {
+  numberOfOptions: number
+  pageNumber: number
+  links: string[]
+}
+
+export interface IQuery {
   housingOption: HousingOptions
   campusName: CampusNames
   maxRent: number

@@ -1,6 +1,5 @@
 import moment from 'moment-timezone'
 import { delimeter, scrapedKeys, WTF } from './constants'
-import { IDictionary } from './types'
 import { IBedroom, ILeaseDetails } from './interfaces'
 
 export class Accommodation {
@@ -41,7 +40,7 @@ export class Accommodation {
     this.description = description
     this.link = link
     this.photoLink = photoLink
-    const dict: IDictionary<string[]> = {}
+    const dict: { [key: string]: string[] } = {}
     let k = 0
     for (let i = 0; i < values.length; i++) {
       if (values[i] === scrapedKeys[k]) k++
