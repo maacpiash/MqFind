@@ -11,5 +11,10 @@ export default function getListings(
     query.campusName,
     query.maxRent,
     pageNum,
-  ).then(resp => Promise.all(resp.links.map(FilterListings)))
+  ).then(resp =>
+    Promise.all([
+      new Promise(res => res(resp.numberOfOptions)),
+      ...resp.links.map(FilterListings),
+    ]),
+  )
 }
