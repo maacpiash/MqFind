@@ -1,21 +1,21 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import { IResponse } from '../models/interfaces'
-import { BASE_URL, CampusNames, HousingOptions } from '../models/constants'
+import { BASE_URL, CampusNames, HousingOptions, OrderOptions } from '../models/constants'
 
 const queryUrl = BASE_URL + '/Listings/Search?'
 
 export function getHouseType(houseType: string): string {
   const { Properties, Rooms } = HousingOptions
   if (houseType === Properties || houseType === Rooms)
-    return `type=${houseType}&`
+    return `type=${houseType}`
   return ''
 }
 
 export function getCampus(campusName: string): string {
   const { NorthRyde, City } = CampusNames
   if (campusName === NorthRyde || campusName === City)
-    return `campus=${campusName}&`
+    return `campus=${campusName}`
   return ''
 }
 
@@ -24,7 +24,16 @@ export function getMaxRent(maxRent: number): string {
 }
 
 export function getPageNumber(pageNumber?: number): string {
-  return pageNumber ? `&Page=${pageNumber}` : '' + '&Order=distance'
+  return pageNumber ? `Page=${pageNumber}` : ''
+}
+
+export function getOrder(option?: string): string {
+  if (!option) return ''
+  const { closest, cheapest, newest } = OrderOptions
+  const base = '&Order='
+  if (option === closest || option === cheapest || option === newest)
+    return base + option
+  return ''
 }
 
 export function urlBuilder(
@@ -32,14 +41,17 @@ export function urlBuilder(
   campusName: string,
   maxRent: number,
   pageNumber?: number,
+  orderOption?: string,
 ): string {
-  const fullUrl =
-    queryUrl +
-    getHouseType(houseType) +
-    getCampus(campusName) +
-    getMaxRent(maxRent) +
-    getPageNumber(pageNumber)
-  return fullUrl
+  let params = [
+    getHouseType(houseType),
+    getCampus(campusName),
+    getMaxRent(maxRent),
+    getPageNumber(pageNumber),
+    getOrder(orderOption),
+  ]
+  params = params.filter(p => p)
+  return queryUrl + params.length ? params.join('&') : ''
 }
 
 export default async function getPageParsed(
@@ -47,8 +59,9 @@ export default async function getPageParsed(
   campus: string,
   max: number,
   pageNum?: number,
+  orderOption?: string,
 ): Promise<IResponse> {
-  const baseUrl = urlBuilder(house, campus, max, pageNum)
+  const baseUrl = urlBuilder(house, campus, max, pageNum, orderOption)
   const $ = await parsePage(baseUrl)
   const numberOfOptions = Number(
     $('div.mb-3 > strong')

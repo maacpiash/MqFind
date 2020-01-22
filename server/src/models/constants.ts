@@ -8,6 +8,12 @@ export enum HousingOptions {
   Rooms = 'rooms',
 }
 
+export enum OrderOptions {
+  cheapest = 'price',
+  closest = 'distance',
+  newest = 'recency',
+}
+
 export const BASE_URL = 'https://find.accommodation.mq.edu.au'
 
 export const scrapedKeys: string[] = [
