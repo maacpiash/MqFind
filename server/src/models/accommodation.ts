@@ -8,9 +8,12 @@ export class Accommodation {
   description: string
   photoLink: string
   vacancy: number
+  distanceFromNRCampus = 0
+  distanceFromCityCampus = 0
   leaseDetails: ILeaseDetails
   bedroomNumber: number
   bedrooms: IBedroom[]
+  rentMin: number
   heatingCooling: string[]
   wheelchairAccess: boolean
   bathroomNumber: number
@@ -34,6 +37,7 @@ export class Accommodation {
     values: string[],
     link: string,
     photoLink: string,
+    stats: string[][],
   ) {
     this.title = title
     this.suburb = suburb
@@ -120,5 +124,13 @@ export class Accommodation {
       dict['Short Stay Option']?.[0] !== 'Short Stay Not Available'
     this.commonAreasAccess =
       dict['Common Areas Accessible']?.[0].split(', ') ?? []
+    this.rentMin = Number(stats[0][1].split('$')[1]) || 0
+    if (stats[1].includes('North') && stats[1].includes('Ryde')) {
+      this.distanceFromNRCampus = Number(stats[1][0])
+      this.distanceFromCityCampus = Number(stats[2][0])
+    } else if (stats[1].includes('City')) {
+      this.distanceFromCityCampus = Number(stats[1][0])
+      this.distanceFromNRCampus = Number(stats[2][0])
+    }
   }
 }

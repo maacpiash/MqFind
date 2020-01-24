@@ -15,6 +15,15 @@ export default async function getPageParsed(url: string): Promise<any> {
         .trim()
       if (text) tds.push(text)
     })
+  const stats = $('div.stat')
+    .toArray()
+    .map(item =>
+      $(item)
+        .text()
+        .trim()
+        .split(' '),
+    )
+    .map(t => t.filter(p => p).map(d => d.trim()))
   const title =
     ($('h1.listing-title').text() ?? '').trim() || '(No title found)'
   const suburb =
@@ -30,6 +39,7 @@ export default async function getPageParsed(url: string): Promise<any> {
     tds,
     url,
     photoLink,
+    stats,
   )
   accommodation.link = url
   return accommodation
