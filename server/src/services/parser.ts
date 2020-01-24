@@ -10,8 +10,10 @@ export default async function getPageParsed(url: string): Promise<any> {
   $('tbody > tr > td')
     .toArray()
     .map(item => {
-      const text = $(item).text()
-      if (text) tds.push(text.trim())
+      const text = $(item)
+        .text()
+        .trim()
+      if (text) tds.push(text)
     })
   const title =
     ($('h1.listing-title').text() ?? '').trim() || '(No title found)'
