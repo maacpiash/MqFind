@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 
-export default function appErrorHandler(
+export function errorHandler(
   err: any,
   req: Request,
   res: Response,
@@ -20,4 +20,14 @@ export default function appErrorHandler(
     return
   }
   next(err)
+}
+
+export function logger(
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void {
+  console.log(new Date().toLocaleString(), req.method, req.url, res.statusCode)
+  next()
 }
