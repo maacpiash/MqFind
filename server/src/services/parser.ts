@@ -5,16 +5,15 @@ import { Accommodation } from '../models/accommodation'
 export default async function getPageParsed(url: string): Promise<any> {
   const content = await axios(url)
   if (!content || !content.data) return {}
-  const tds: string[] = []
   const $ = load(content.data)
-  $('tbody > tr > td')
+  const tds = $('tbody > tr > td')
     .toArray()
-    .map(item => {
-      const text = $(item)
+    .map(item =>
+      $(item)
         .text()
-        .trim()
-      if (text) tds.push(text)
-    })
+        .trim(),
+    )
+    .filter(p => p)
   const stats = $('div.stat')
     .toArray()
     .map(item =>

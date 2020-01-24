@@ -24,14 +24,16 @@ export function getListings(
 export default function getAllListings(
   query: IQuery,
 ): Promise<(number | Accommodation)[]> {
-  return getListings(query).then(array => {
-    let promise = getListings(query)
-    const max = (array[0] as number) / OptionsPerPage + 1
-    for (let i = 2; i < max; i++) {
-      promise = promise.then(arr => list(query, arr, i))
-    }
-    return promise
-  })
+  return getListings(query)
+    .then(array => {
+      let promise = getListings(query)
+      const max = (array[0] as number) / OptionsPerPage + 1
+      for (let i = 2; i < max; i++) {
+        promise = promise.then(arr => list(query, arr, i))
+      }
+      return promise
+    })
+    .then(array => array.slice(1, array.length)) // because the first item is the number
 }
 
 function list(

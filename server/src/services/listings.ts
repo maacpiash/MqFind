@@ -51,7 +51,7 @@ export function urlBuilder(
     getOrder(orderOption),
   ]
   params = params.filter(p => p)
-  return queryUrl + params.length ? params.join('&') : ''
+  return queryUrl + (params.length ? params.join('&') : '')
 }
 
 export default async function getPageParsed(
