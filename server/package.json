@@ -2,16 +2,16 @@
   "name": "@mq-housing/server",
   "version": "1.0.0",
   "description": "Server-side software for @mq-housing, the server with web scraper",
-  "main": "out/index.js",
+  "main": "out/server.js",
   "repository": "https://github.com/maacpiash/mq-housing",
   "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
   "private": false,
   "scripts": {
     "build": "tsc",
-    "dev": "node --inspect=4141 -r ts-node/register ./src/index.ts",
+    "dev": "node --inspect=4141 -r ts-node/register ./src/server.ts",
     "lint": "eslint **/*.ts --fix",
-    "start": "yarn build && node out/index.js",
+    "start": "yarn build && node out/server.js",
     "watch": "nodemon"
   },
   "dependencies": {
