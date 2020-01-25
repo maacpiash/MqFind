@@ -3,6 +3,7 @@ import FilterListings from './parser'
 import { IQuery } from '../models/interfaces'
 import { Accommodation } from '../models/accommodation'
 import { OptionsPerPage } from '../models/constants'
+import filterAccommodation from './filter'
 
 export function getListings(
   query: IQuery,
@@ -33,7 +34,7 @@ export default function getAllListings(
       }
       return promise
     })
-    .then(array => array.slice(1, array.length)) // because the first item is the number
+    .then(array => array.filter(option => filterAccommodation(option, query)))
 }
 
 function list(

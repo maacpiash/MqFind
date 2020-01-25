@@ -1,5 +1,5 @@
 import moment from 'moment-timezone'
-import { delimeter, scrapedKeys, WTF } from './constants'
+import { delimeter, scrapedKeys, WTF, CampusNames } from './constants'
 import { IBedroom, ILeaseDetails } from './interfaces'
 
 export class Accommodation {
@@ -8,8 +8,7 @@ export class Accommodation {
   description: string
   photoLink: string
   vacancy: number
-  distanceFromNRCampus = 0
-  distanceFromCityCampus = 0
+  distance: { [campusName: string]: number } = {}
   leaseDetails: ILeaseDetails
   bedroomNumber: number
   bedrooms: IBedroom[]
@@ -75,9 +74,13 @@ export class Accommodation {
       const numbers = range[0].split('-') // ['x', 'y']
       minLease = Number(numbers[0]) ?? 0
       maxLease = Number(numbers[1]) ?? 0
-    } else {
+    } else if (leaseStr.includes('At least')) {
       // 'At least z months'
       minLease = Number(leaseStr.split(' ')[2]) ?? 0
+    } else {
+      // 'z months'
+      minLease = Number(leaseStr.split(' ')[0]) ?? 0
+      maxLease = minLease
     }
     const leaseType = dict['Type of Lease']?.[0] ?? ''
     this.leaseDetails = { minLease, maxLease, leaseType } as ILeaseDetails
@@ -90,9 +93,9 @@ export class Accommodation {
     if (this.bedroomNumber > 1) bedrooms.forEach(bedroom => bedroom.shift())
 
     for (const bedroom of bedrooms) {
-      const firstLine = bedroom[0].split(' ') // ['Single', '-', '$230', '/', 'week']
+      const firstLine = bedroom[0].split(' - ') // [ 'Single and Ensuite', '$260 / week' ]
       const vacancyType = firstLine[0]
-      const weeklyRate = Number(firstLine[2].substr(1))
+      const weeklyRate = Number(firstLine[1].split(' / ')[0].split('$')[1])
       const bond = Number(bedroom[1].split('$')[1] ?? '0')
       const availableFrom = moment
         .tz(new Date(bedroom[2].substr(10)), 'Australia/Sydney')
@@ -126,11 +129,11 @@ export class Accommodation {
       dict['Common Areas Accessible']?.[0].split(', ') ?? []
     this.rentMin = Number(stats[0][1].split('$')[1]) || 0
     if (stats[1].includes('North') && stats[1].includes('Ryde')) {
-      this.distanceFromNRCampus = Number(stats[1][0])
-      this.distanceFromCityCampus = Number(stats[2][0])
+      this.distance[CampusNames.NorthRyde] = Number(stats[1][0])
+      this.distance[CampusNames.City] = Number(stats[2][0])
     } else if (stats[1].includes('City')) {
-      this.distanceFromCityCampus = Number(stats[1][0])
-      this.distanceFromNRCampus = Number(stats[2][0])
+      this.distance[CampusNames.City] = Number(stats[1][0])
+      this.distance[CampusNames.NorthRyde] = Number(stats[2][0])
     }
   }
 }
