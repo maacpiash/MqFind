@@ -12,6 +12,7 @@
     "dev": "lerna run --parallel dev",
     "lint": "lerna run --parallel lint",
     "start": "lerna run --parallel start",
+    "start:client": "lerna run --stream --scope @mq-housing/client start",
     "watch": "lerna run --parallel watch"
   },
   "workspaces": [
