@@ -7,7 +7,9 @@ export default function filterAccommodation(
 ): boolean {
   const {
     campusName,
+    maxRent,
     bathroom,
+    ensuite,
     leaseMin,
     leaseMax,
     distanceMax,
@@ -24,6 +26,15 @@ export default function filterAccommodation(
   if (typeof option === 'number') return true
 
   if (bathroom !== undefined && option.bathroomNumber < bathroom) return false
+
+  if (ensuite) {
+    const bedrooms = option.bedrooms.filter(
+      br =>
+        br.vacancyType.toLowerCase().includes('ensuite') &&
+        br.weeklyRate <= maxRent,
+    )
+    if (bedrooms.length === 0) return false
+  }
 
   if (leaseMin !== undefined && option.leaseDetails.minLease < leaseMin)
     return false

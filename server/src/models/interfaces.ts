@@ -24,6 +24,7 @@ export interface IQuery {
   campusName: CampusNames
   maxRent: number
   bathroom?: number
+  ensuite?: boolean
   leaseMin?: number
   leaseMax?: number
   distanceMax?: number
@@ -44,6 +45,7 @@ export function queryBuilder(object: any): IQuery {
     campusName,
     maxRent: Number(maxRent),
     bathroom: Number(object.bathroom) || undefined,
+    ensuite: object.ensuite ? Boolean(object.ensuite) : undefined,
     leaseMin: Number(object.leaseMin) || undefined,
     leaseMax: Number(object.leaseMax) || undefined,
     distanceMax: Number(object.distanceMax) || undefined,
