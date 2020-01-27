@@ -1,9 +1,9 @@
 {
-  "name": "@mq-housing/server",
+  "name": "mqfind",
   "version": "1.0.0",
   "description": "Query and sort listings of available housing options posted on MqU's website",
   "main": "index.js",
-  "repository": "https://github.com/maacpiash/mq-housing",
+  "repository": "https://github.com/maacpiash/mqfind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
   "private": true,
@@ -12,7 +12,7 @@
     "dev": "lerna run --parallel dev",
     "lint": "lerna run --parallel lint",
     "start": "lerna run --parallel start",
-    "start:client": "lerna run --stream --scope @mq-housing/client start",
+    "start:client": "lerna run --stream --scope @mqfind/client start",
     "watch": "lerna run --parallel watch"
   },
   "workspaces": [

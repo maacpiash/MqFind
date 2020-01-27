@@ -1,12 +1,12 @@
 {
-  "name": "@mq-housing/server",
+  "name": "@mqfind/server",
   "version": "1.0.0",
   "description": "Server-side software for @mq-housing, the server with web scraper",
   "main": "out/server.js",
-  "repository": "https://github.com/maacpiash/mq-housing",
+  "repository": "https://github.com/maacpiash/mqfind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "scripts": {
     "build": "tsc",
     "dev": "node --inspect=4141 -r ts-node/register ./src/server.ts",
