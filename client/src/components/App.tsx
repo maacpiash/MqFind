@@ -1,7 +1,8 @@
 import React from 'react'
+import BasicForm from './BasicForm'
 
 export default class App extends React.Component<{}, {}, any> {
   render() {
-    return <div>Find homes near Macquarie University</div>
+    return <BasicForm />
   }
 }
