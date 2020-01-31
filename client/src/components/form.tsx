@@ -18,12 +18,12 @@ import { FormState, IMenuItem } from '../types'
 const styles = {
   grid_container: {
     display: 'grid',
-    'grid-template-columns': 'auto auto',
+    gridTemplateColumns: 'auto auto',
     padding: '10px',
   },
   grid_item: {
     padding: '10px',
-    'font-size': '30px',
+    fontSize: '30px',
   },
 }
 
@@ -103,8 +103,8 @@ export default class Form extends React.Component<FormProps, FormState> {
       wheelchairAccess,
     } = this.state
     return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
+      <Container component="main">
+        {/* <CssBaseline /> */}
         <div>
           <div>
             <div style={styles.grid_container}>
