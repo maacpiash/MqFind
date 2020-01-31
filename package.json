@@ -13,6 +13,7 @@
     "lint": "lerna run --parallel lint",
     "start": "lerna run --parallel start",
     "start:client": "lerna run --stream --scope @mqfind/client start",
+    "start:server": "lerna run --stream --scope @mqfind/server start",
     "watch": "lerna run --parallel watch"
   },
   "workspaces": [
