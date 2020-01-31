@@ -13,15 +13,14 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Delimeter } from './Atomics'
-import { FormState } from '../types/form-types'
-import { IMenuItem } from '../types/interfaces'
+import { FormState, IMenuItem } from '../types'
 
 const campuses: IMenuItem[] = [
   { value: 'macquarie-university', label: 'North Ryde Campus' },
   { value: 'macquarie-university-city', label: 'City Campus' },
 ]
 
-const housingTypes: IMenuItem[] = [
+const housingOptions: IMenuItem[] = [
   { value: 'properties', label: 'Properties' },
   { value: 'rooms', label: 'Rooms' },
 ]
@@ -37,7 +36,7 @@ const numberKeys: FormStateKey[] = [
   'bedroom',
 ]
 
-const stringKeys: FormStateKey[] = ['housingType', 'campusName']
+const stringKeys: FormStateKey[] = ['housingOption', 'campusName']
 
 
 const updateState = <T extends string | number>(
@@ -73,7 +72,7 @@ export default class Form extends React.Component<FormProps, FormState> {
 
   render() {
     const {
-      housingType,
+      housingOption,
       campusName,
       maxRent,
       bathroom,
@@ -105,15 +104,15 @@ export default class Form extends React.Component<FormProps, FormState> {
                 <FormControl style={{ minWidth: 300 }}>
                   <TextField
                     id="select-housing-type"
-                    name="housingType"
+                    name="housingOption"
                     select
-                    error={!housingType}
+                    error={!housingOption}
                     variant="outlined"
                     label="Housing Type"
-                    value={housingType}
-                    onChange={this.handleChange.bind(this, 'housingType')}
+                    value={housingOption}
+                    onChange={this.handleChange.bind(this, 'housingOption')}
                   >
-                    {housingTypes.map(option => (
+                    {housingOptions.map(option => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>

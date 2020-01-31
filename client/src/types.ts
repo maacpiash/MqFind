@@ -1,5 +1,5 @@
 export type FormState = {
-  housingType: string
+  housingOption: string
   campusName: string
   maxRent: number
   bathroom?: number
@@ -16,4 +16,20 @@ export type FormState = {
   female?: boolean
   male?: boolean
   wheelchairAccess?: boolean
+}
+
+export type AppState = {
+  formFields: FormState
+  showForm: boolean
+  options: any[]
+}
+
+export interface IMenuItem {
+  value: string
+  label: string
+}
+
+export type ListProps = {
+  options: any[]
+  housingOption: string
 }
