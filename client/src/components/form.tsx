@@ -15,6 +15,18 @@ import {
 import { Delimeter } from './Atomics'
 import { FormState, IMenuItem } from '../types'
 
+const styles = {
+  grid_container: {
+    display: 'grid',
+    'grid-template-columns': 'auto auto',
+    padding: '10px',
+  },
+  grid_item: {
+    padding: '10px',
+    'font-size': '30px',
+  },
+}
+
 const campuses: IMenuItem[] = [
   { value: 'macquarie-university', label: 'North Ryde Campus' },
   { value: 'macquarie-university-city', label: 'City Campus' },
@@ -95,8 +107,8 @@ export default class Form extends React.Component<FormProps, FormState> {
         <CssBaseline />
         <div>
           <div>
-            <div className="grid-container">
-              <div className="grid-item">
+            <div style={styles.grid_container}>
+              <div style={styles.grid_item}>
                 <Typography component="h1" variant="h5">
                   Mandatory fields
                 </Typography>
@@ -214,7 +226,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                   />
                 </FormControl>
               </div>
-              <div className="grid-item">
+              <div style={styles.grid_item}>
                 <FormControl style={{ minWidth: 300 }}>
                   <TextField
                     id="text-vacancy"
