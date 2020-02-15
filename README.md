@@ -2,6 +2,6 @@
 
 # Scraper for Macquarie Private Accommodation listings
 
-Find and filter listings of available accommodations from find.accommodation.mq.edu.au, with more ease and better control!
+Find and filter listings of available accommodations from [find.accommodation.mq.edu.au](find.accommodation.mq.edu.au), with more ease and better control!
 
 *WIP*
