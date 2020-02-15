@@ -78,7 +78,7 @@ export default class Form extends React.Component<FormProps, FormState> {
     this.setState(updateState(key, event.target.value))
   }
 
-  handleSubmit(event: any): void {
+  handleSubmit(): void {
     this.props.setParams(this.state)
   }
 
@@ -104,7 +104,6 @@ export default class Form extends React.Component<FormProps, FormState> {
     } = this.state
     return (
       <Container component="main">
-        {/* <CssBaseline /> */}
         <div>
           <div>
             <div style={styles.grid_container}>
@@ -156,6 +155,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                 <FormControl style={{ minWidth: 300 }}>
                   <TextField
                     id="text-max-rent"
+                    type="number"
                     name="maxRent"
                     error={!maxRent}
                     variant="outlined"
@@ -173,7 +173,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                 <br />
                 <FormControl style={{ minWidth: 300 }}>
                   <TextField
-                    id="select-min-bathroom"
+                    id="text-min-bathroom"
                     name="bathroom"
                     type="number"
                     variant="outlined"

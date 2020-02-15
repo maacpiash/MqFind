@@ -8,11 +8,12 @@ export default class App extends React.Component<{}, AppState> {
     super(props)
     this.state = {
       formFields: {
-        housingType: 'rooms',
+        housingOption: 'rooms',
         campusName: 'macquarie-university',
         maxRent: 200,
       },
       showForm: true,
+      options: []
     }
   }
 
