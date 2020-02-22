@@ -372,6 +372,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                 <div style={{ margin: '5 px' }}>
                   <Button
                     variant="outlined"
+                    disabled={!housingOption || !campusName || !maxRent}
                     color="primary"
                     className="row align-items-center"
                     onClick={this.handleSubmit.bind(this)}
