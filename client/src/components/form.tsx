@@ -75,7 +75,7 @@ export default class Form extends React.Component<FormProps, FormState> {
   }
 
   handleChange(key: FormStateKey, event: any): void {
-    this.setState(updateState(key, event.target.value))
+    this.setState(updateState(key, event.target.value), () => this.props.setParams(this.state))
   }
 
   handleSubmit(): void {

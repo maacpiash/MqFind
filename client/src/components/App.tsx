@@ -29,11 +29,12 @@ export default class App extends React.Component<{}, AppState> {
   }
 
   setParams(state: FormState): void {
-    this.setState({ formFields: state })
-    const fields = this.state.formFields
-    const newFields = this.refine(fields)
-    const url = urlBuilder('https://localhost:4100', newFields)
-    console.log(url)
+    this.setState({ formFields: state }, () => {
+      const fields = this.state.formFields
+      const newFields = this.refine(fields)
+      const url = urlBuilder('https://localhost:4100', newFields)
+      console.log(url)
+    })
   }
 
   render() {
