@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Form from './form'
+import Form from './Form'
 import { AppState, FormState } from '../types'
 import urlBuilder from '../urlBuilder'
 
