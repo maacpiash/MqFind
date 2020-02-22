@@ -40,6 +40,7 @@ const housingOptions: IMenuItem[] = [
 type FormStateKey = keyof FormState
 
 const numberKeys: FormStateKey[] = [
+  'maxRent',
   'bathroom',
   'leaseMin',
   'leaseMax',
