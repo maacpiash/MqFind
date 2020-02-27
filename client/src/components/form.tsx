@@ -67,6 +67,7 @@ const updateState = <T extends string | number>(
 type FormProps = {
   initialState: FormState
   setParams: (state: FormState) => void
+  fetchData: () => void
 }
 
 export default class Form extends React.Component<FormProps, FormState> {
@@ -80,7 +81,7 @@ export default class Form extends React.Component<FormProps, FormState> {
   }
 
   handleSubmit(): void {
-    this.props.setParams(this.state)
+    this.props.fetchData()
   }
 
   render() {

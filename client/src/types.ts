@@ -20,6 +20,7 @@ export type FormState = {
 
 export type AppState = {
   formFields: FormState
+  apiUrl: string
   showForm: boolean
   options: any[]
 }

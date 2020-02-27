@@ -6,12 +6,14 @@ import urlBuilder from '../urlBuilder'
 export default class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props)
+    const formFields: any = {
+      housingOption: 'rooms',
+      campusName: 'macquarie-university',
+      maxRent: 200,
+    }
     this.state = {
-      formFields: {
-        housingOption: 'rooms',
-        campusName: 'macquarie-university',
-        maxRent: 200,
-      },
+      formFields,
+      apiUrl: urlBuilder('http://localhost:4100/', formFields),
       showForm: true,
       options: []
     }
@@ -32,9 +34,14 @@ export default class App extends React.Component<{}, AppState> {
     this.setState({ formFields: state }, () => {
       const fields = this.state.formFields
       const newFields = this.refine(fields)
-      const url = urlBuilder('https://localhost:4100', newFields)
-      console.log(url)
+      const apiUrl = urlBuilder('http://localhost:4100/', newFields)
+      this.setState({ apiUrl })
     })
+  }
+
+  fetchData(): void {
+    const { apiUrl } = this.state
+    fetch(apiUrl).then(response => response.json()).then(console.log)
   }
 
   render() {
@@ -42,6 +49,7 @@ export default class App extends React.Component<{}, AppState> {
       <Form
         initialState={this.state.formFields}
         setParams={this.setParams.bind(this)}
+        fetchData={this.fetchData.bind(this)}
       />
     )
   }
