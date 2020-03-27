@@ -1,30 +1,34 @@
-import express, { Request, Response, NextFunction } from 'express'
-import cors from 'cors'
+import { Server, Request } from '@hapi/hapi'
+import querySchema from './validation'
 import GetDetails from './services'
 import { queryBuilder } from './models/interfaces'
-import { errorHandler, logger } from './middleware'
 
-const LISTEN_PORT = process.env.LISTEN_PORT || 4100
+const init = async (): Promise<void> => {
+  const server = new Server({
+    port: process.env.LISTEN_PORT || 4100,
+    host: process.env.HOST || 'localhost',
+    routes: { cors: { origin: ['*'] } },
+  })
 
-const app = express()
-  .use(express.json())
-  .use(cors())
+  server.route({
+    method: 'GET',
+    path: '/',
+    options: { validate: { query: querySchema } },
+    handler: (request: Request) => {
+      console.log(`REST ${request.url} ${new Date().toLocaleString()}`)
+      return GetDetails(queryBuilder(request.query))
+    },
+  })
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-  const { housingOption, campusName, maxRent } = req.query
-  if (!housingOption || !campusName || !maxRent) {
-    res.statusCode = 400
-    res.send(`housingOption, campusName, maxRent are required`)
-  }
-  const query = queryBuilder(req.query)
-  GetDetails(query)
-    .then(str => res.send(str))
-    .then(next)
+  await server.start()
+  console.log(
+    `Server started on ${server.info.uri} at ${new Date().toLocaleString()}`,
+  )
+}
+
+process.on('unhandledRejection', (err: any) => {
+  console.log(err)
+  process.exit(1)
 })
 
-app.use(logger)
-app.use(errorHandler)
-
-app.listen(LISTEN_PORT, () =>
-  console.log(`Server started on port ${LISTEN_PORT}...`),
-)
+init()
