@@ -8,20 +8,19 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf out && tsc && copyfiles src/schema.graphql out/",
     "dev": "node --inspect=4141 -r ts-node/register ./src/server.ts",
     "lint": "eslint **/*.ts --fix",
     "start": "yarn build && node out/server.js",
     "watch": "nodemon"
   },
   "dependencies": {
+    "@apollo/server": "^3.0.0-alpha.1",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
-    "apollo-server-hapi": "^2.11.0",
     "axios": "^0.19.1",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
-    "graphql-tools": "^4.0.7",
     "moment-timezone": "^0.5.27"
   },
   "devDependencies": {
@@ -30,7 +29,9 @@
     "@types/hapi__hapi": "^19.0.2",
     "@types/hapi__joi": "^16.0.12",
     "@types/moment-timezone": "^0.5.12",
+    "copyfiles": "^2.2.0",
     "nodemon": "^2.0.2",
+    "rimraf": "^3.0.2",
     "ts-node": "^8.6.2"
   }
 }
