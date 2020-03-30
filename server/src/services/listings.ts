@@ -1,7 +1,12 @@
 import axios from 'axios'
 import { load } from 'cheerio'
 import { IResponse } from '../models/interfaces'
-import { BASE_URL, CampusNames, HousingOptions, OrderOptions } from '../models/constants'
+import {
+  BASE_URL,
+  CampusNames,
+  HousingOptions,
+  OrderOptions,
+} from '../models/constants'
 
 const queryUrl = BASE_URL + '/Listings/Search?'
 

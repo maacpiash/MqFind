@@ -8,7 +8,7 @@ export class Accommodation {
   description: string
   photoLink: string
   vacancy: number
-  distance: { [campusName: string]: number } = {}
+  distance: { [campusName in CampusNames]: number }
   leaseDetails: ILeaseDetails
   bedroomNumber: number
   bedrooms: IBedroom[]
@@ -128,12 +128,15 @@ export class Accommodation {
     this.commonAreasAccess =
       dict['Common Areas Accessible']?.[0].split(', ') ?? []
     this.rentMin = Number(stats[0][1].split('$')[1]) || 0
-    if (stats[1].includes('North') && stats[1].includes('Ryde')) {
-      this.distance[CampusNames.NorthRyde] = Number(stats[1][0])
-      this.distance[CampusNames.City] = Number(stats[2][0])
-    } else if (stats[1].includes('City')) {
-      this.distance[CampusNames.City] = Number(stats[1][0])
-      this.distance[CampusNames.NorthRyde] = Number(stats[2][0])
+
+    const NorthRydeFirst = stats[1].includes('North Ryde')
+    const CityFirst = stats[1].includes('City')
+    const first = Number(stats[1][0])
+    const second = Number(stats[2][0])
+
+    this.distance = {
+      [CampusNames.NorthRyde]: NorthRydeFirst ? first : second,
+      [CampusNames.City]: CityFirst ? first : second,
     }
   }
 }
