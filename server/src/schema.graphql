@@ -1,0 +1,70 @@
+type Distance {
+  properties: Float
+  rooms: Float
+}
+
+type LeaseDetails {
+  maxLease: Float
+  minLease: Float
+  leaseType: String
+}
+
+type Accommodation {
+  title: String
+  suburb: String
+  description: String
+  photoLink: String
+  vacancy: Int
+  distance: Distance
+  leaseDetails: LeaseDetails
+  bedroomNumber: Int
+  bedrooms: [Bedroom]
+  rentMin: Int
+  heatingCooling: [String]
+  wheelchairAccess: Boolean
+  bathroomNumber: Int
+  bedroomFurnishing: String
+  houseFurnishing: String
+  hasInternet: Boolean
+  cantSmoke: Boolean
+  safety: [String]
+  bills: String
+  utilities: [String]
+  noPets: Boolean
+  prefGender: [String]
+  shortStay: Boolean
+  commonAreasAccess: [String]
+  link: String
+}
+
+type Query {
+  getAccommodations(
+    housingOption: HousingOptions!,
+    campusName: CampusNames!,
+    maxRent: Int!,
+    bathroom: Int,
+    ensuite: Boolean,
+    leaseMin: Int,
+    leaseMax: Int,
+    distanceMax: Float,
+    vacancy: Int,
+    bedroom: Int,
+    heating: Boolean,
+    cooling: Boolean,
+    internet: Boolean,
+    cantSmoke: Boolean,
+    prefGender: [String],
+    wheelchairAccess: Boolean
+  ): [Accommodation]
+}
+
+enum HousingOptions {
+  properties
+  rooms
+}
+
+enum OrderOptions {
+  cheapest
+  closest
+  newest
+}
