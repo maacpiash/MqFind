@@ -2,18 +2,19 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "declaration": true,
-    "outDir": "./out",
+    "outDir": "server/out",
+    "declaration": false,
     "strict": true,
     "esModuleInterop": true,
-    "jsx": "react"
+    "noImplicitThis": false,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true
   },
   "include": [
-    "client",
-    "server"
+    "server/src"
   ],
   "exclude": [
     "node_modules",
-    "**/out"
+    "server/out"
   ]
 }

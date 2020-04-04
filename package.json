@@ -1,35 +1,44 @@
 {
   "name": "mqfind",
   "version": "1.0.0",
-  "description": "Query and sort listings of available housing options posted on MqU's website",
-  "main": "index.js",
+  "description": "Server-side software for MqFind: the server with web scraper",
   "repository": "https://github.com/maacpiash/mqfind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "lerna run --parallel build",
-    "bootstrap": "lerna bootstrap",
-    "dev": "lerna run --parallel dev",
-    "lint": "lerna run --parallel lint",
-    "start": "lerna run --parallel start",
-    "start:client": "lerna run --stream --scope @mqfind/client start",
-    "start:server": "lerna run --stream --scope @mqfind/server start",
-    "watch": "lerna run --parallel watch"
+    "build": "rimraf server/out && tsc && copyfiles server/src/schema.graphql server/out",
+    "dev": "node --inspect=4141 -r ts-node/register server/src/server.ts",
+    "lint": "eslint **/*.ts --fix",
+    "start": "yarn build && node server/out/server.js",
+    "watch": "nodemon"
   },
-  "workspaces": [
-    "client",
-    "server"
-  ],
+  "dependencies": {
+    "@apollo/server": "^3.0.0-alpha.1",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.19.1",
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "moment-timezone": "^0.5.27"
+  },
   "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/cheerio": "^0.22.15",
+    "@types/hapi__hapi": "^19.0.2",
+    "@types/hapi__joi": "^16.0.12",
+    "@types/moment-timezone": "^0.5.12",
     "@types/node": "^13.1.6",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
+    "copyfiles": "^2.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "lerna": "^3.20.2",
+    "nodemon": "^2.0.2",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.4"
   }
 }
