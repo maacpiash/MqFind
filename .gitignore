@@ -697,3 +697,4 @@ MigrationBackup/
 # End of https://www.gitignore.io/api/linux,macos,node,react,visualstudio,visualstudiocode,webstorm,webstorm+all,windows
 
 **/temp.json
+**/build

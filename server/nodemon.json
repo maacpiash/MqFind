@@ -8,6 +8,6 @@
   "watch": [
     "src/"
   ],
-  "exec": "yarn dev",
+  "exec": "node --inspect=4141 -r ts-node/register ./src/server.ts",
   "ext": "ts,json"
 }

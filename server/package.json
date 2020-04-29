@@ -8,11 +8,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "rimraf out && tsc && copyfiles src/schema.graphql out/",
-    "dev": "node --inspect=4141 -r ts-node/register ./src/server.ts",
+    "build": "tsc && copyfiles src/schema.graphql out",
+    "clean": "rimraf out",
+    "dev": "nodemon",
     "lint": "eslint **/*.ts --fix",
-    "start": "yarn build && node out/server.js",
-    "watch": "nodemon"
+    "start": "node out/server.js"
   },
   "dependencies": {
     "@apollo/server": "^3.0.0-alpha.1",

@@ -8,14 +8,18 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "lerna run --parallel build",
     "bootstrap": "lerna bootstrap",
+    "build": "lerna run --parallel build",
+    "build:client": "lerna run --stream --scope @mqfind/client build",
+    "build:server": "lerna run --stream --scope @mqfind/server build",
+    "clean": "lerna run --parallel clean",
     "dev": "lerna run --parallel dev",
+    "dev:client": "lerna run --stream --scope @mqfind/client dev",
+    "dev:server": "lerna run --stream --scope @mqfind/server dev",
     "lint": "lerna run --parallel lint",
     "start": "lerna run --parallel start",
     "start:client": "lerna run --stream --scope @mqfind/client start",
-    "start:server": "lerna run --stream --scope @mqfind/server start",
-    "watch": "lerna run --parallel watch"
+    "start:server": "lerna run --stream --scope @mqfind/server start"
   },
   "workspaces": [
     "client",
