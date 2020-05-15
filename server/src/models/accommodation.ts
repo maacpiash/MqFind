@@ -5,6 +5,7 @@ import { IBedroom, ILeaseDetails } from './interfaces'
 export class Accommodation {
   title: string
   suburb: string
+  postcode: number
   description: string
   photoLink: string
   vacancy: number
@@ -31,7 +32,7 @@ export class Accommodation {
 
   constructor(
     title: string,
-    suburb: string,
+    address: string,
     description: string,
     values: string[],
     link: string,
@@ -39,7 +40,15 @@ export class Accommodation {
     stats: string[][],
   ) {
     this.title = title
-    this.suburb = suburb
+    if (address !== '(No address found)') {
+      const location = address.split(' • ')
+      this.suburb = location[0]
+      const remainder = location[1].split(' ')
+      this.postcode = Number(remainder[remainder.length - 1])
+    } else {
+      this.suburb = ''
+      this.postcode = 0
+    }
     this.description = description
     this.link = link
     this.photoLink = photoLink

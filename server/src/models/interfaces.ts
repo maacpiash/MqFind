@@ -23,6 +23,8 @@ export interface IQuery {
   housingOption: HousingOptions
   campusName: CampusNames
   maxRent: number
+  suburb?: string
+  postcode?: number
   bathroom?: number
   ensuite?: boolean
   leaseMin?: number
@@ -44,6 +46,8 @@ export function queryBuilder(object: any): IQuery {
     housingOption,
     campusName,
     maxRent: Number(maxRent),
+    suburb: object.suburb || undefined,
+    postcode: Number(object.postcode) || undefined,
     bathroom: Number(object.bathroom) || undefined,
     ensuite: object.ensuite ? Boolean(object.ensuite) : undefined,
     leaseMin: Number(object.leaseMin) || undefined,

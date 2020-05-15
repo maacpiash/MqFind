@@ -8,6 +8,8 @@ export default function filterAccommodation(
   const {
     campusName,
     maxRent,
+    suburb,
+    postcode,
     bathroom,
     ensuite,
     leaseMin,
@@ -24,6 +26,10 @@ export default function filterAccommodation(
   } = query
 
   if (typeof option === 'number') return true
+
+  if (suburb && option.suburb.toLowerCase() !== suburb.toLowerCase()) return false
+
+  if (postcode && option.postcode !== postcode) return false
 
   if (bathroom !== undefined && option.bathroomNumber < bathroom) return false
 

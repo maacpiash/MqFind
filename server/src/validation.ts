@@ -13,6 +13,10 @@ const querySchema = object({
     .min(0)
     .default(200)
     .required(),
+  suburb: string(),
+  postcode: number()
+    .min(1001)
+    .max(3707), // https://postcodes-australia.com/state-postcodes/nsw
   bathroom: number().min(1),
   ensuite: bool(),
   leaseMin: number().min(1),
