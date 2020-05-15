@@ -1,6 +1,7 @@
 {
   "name": "@mqfind/client",
   "version": "1.0.0",
+  "description": "Client-side software for MqFind: the React.js web app with forms, listings, and more!",
   "repository": "https://github.com/maacpiash/mqfind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
