@@ -1,10 +1,9 @@
 {
   "name": "mqfind",
   "version": "1.0.0",
-  "description": "Query and sort listings of available housing options posted on MqU's website",
-  "main": "index.js",
-  "repository": "https://github.com/maacpiash/mqfind",
-  "author": "Mohammad Abdul Ahad Chowdhury <ahadc@maacpiash.com> (https://www.maacpiash.com)",
+  "description": "Query listings of accommodation near Macquarie University campuses",
+  "repository": "https://github.com/maacpiash/MqFind",
+  "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
   "license": "MIT",
   "private": true,
   "scripts": {
