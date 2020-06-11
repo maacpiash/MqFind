@@ -5,7 +5,7 @@
   "main": "out/server.js",
   "repository": "https://github.com/maacpiash/MqFind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {
     "build": "tsc && copyfiles src/schema.graphql -u 1 out",

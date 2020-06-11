@@ -4,7 +4,7 @@
   "description": "Query listings of accommodation near Macquarie University campuses",
   "repository": "https://github.com/maacpiash/MqFind",
   "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
