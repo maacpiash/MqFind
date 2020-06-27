@@ -16,6 +16,7 @@
  */
 import { Accommodation } from '../models/accommodation'
 import { IQuery } from '../models/interfaces'
+import { cleanUpText } from '../models/helpers'
 
 export default function filterAccommodation(
   option: number | Accommodation,
@@ -39,6 +40,7 @@ export default function filterAccommodation(
     cantSmoke,
     prefGender,
     wheelchairAccess,
+    keywords,
   } = query
 
   if (typeof option === 'number') return true
@@ -97,6 +99,14 @@ export default function filterAccommodation(
     wheelchairAccess !== option.wheelchairAccess
   )
     return false
+
+  if (keywords && keywords.length) {
+    const { title, suburb, description } = option
+    const fields = [title, suburb, description].map(cleanUpText)
+    const keys = keywords.map(cleanUpText)
+    if (!fields.some(f => keys.some(k => f.includes(k))))
+      return false
+  }
 
   return true
 }

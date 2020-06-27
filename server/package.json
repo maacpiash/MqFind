@@ -8,14 +8,13 @@
   "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {
-    "build": "tsc && copyfiles src/schema.graphql -u 1 out",
+    "build": "tsc",
     "clean": "rimraf out",
     "dev": "nodemon",
     "lint": "eslint **/*.ts --fix",
     "start": "node out/server.js"
   },
   "dependencies": {
-    "@apollo/server": "^3.0.0-alpha.1",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.1",
@@ -27,7 +26,6 @@
     "@types/hapi__hapi": "^19.0.2",
     "@types/hapi__joi": "^16.0.12",
     "@types/moment-timezone": "^0.5.12",
-    "copyfiles": "^2.2.0",
     "nodemon": "^2.0.2",
     "rimraf": "^3.0.2",
     "ts-node": "^8.6.2"

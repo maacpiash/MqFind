@@ -46,6 +46,7 @@ const querySchema = object({
   canSmoke: bool(),
   prefGender: string().valid('F', 'F,M', 'M'),
   wheelchairAccess: bool(),
+  keywords: string(),
 })
 
 export default querySchema
