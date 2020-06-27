@@ -15,6 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import { HousingOptions, CampusNames } from './constants'
+import { cleanUpText } from './helpers'
 
 export interface IBedroom {
   vacancyType: string
@@ -54,6 +55,7 @@ export interface IQuery {
   cantSmoke?: boolean
   prefGender?: string[]
   wheelchairAccess?: boolean
+  keywords?: string[]
 }
 
 export function queryBuilder(object: any): IQuery {
@@ -80,6 +82,9 @@ export function queryBuilder(object: any): IQuery {
       : [],
     wheelchairAccess: object.wheelchairAccess
       ? Boolean(object.wheelchairAccess)
+      : undefined,
+    keywords: object.keywords
+      ? object.keywords.split(',').map(cleanUpText)
       : undefined,
   } as IQuery
 }
