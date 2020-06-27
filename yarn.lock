@@ -2727,9 +2727,9 @@
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
 "@types/moment-timezone@^0.5.12":
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/@types/moment-timezone/-/moment-timezone-0.5.12.tgz#0fb680c03db194fe8ff4551eaeb1eec8d3d80e9f"
-  integrity sha512-hnHH2+Efg2vExr/dSz+IX860nSiyk9Sk4pJF2EmS11lRpMcNXeB4KBW5xcgw2QPsb9amTXdsVNEe5IoJXiT0uw==
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/@types/moment-timezone/-/moment-timezone-0.5.13.tgz#0317ccc91eb4c7f4901704166166395c39276528"
+  integrity sha512-SWk1qM8DRssS5YR9L4eEX7WUhK/wc96aIr4nMa6p0kTk9YhGGOJjECVhIdPEj13fvJw72Xun69gScXSZ/UmcPg==
   dependencies:
     moment ">=2.14.0"
 
@@ -5768,9 +5768,9 @@ escodegen@^1.11.0, escodegen@^1.9.1:
     source-map "~0.6.1"
 
 eslint-config-prettier@^6.9.0:
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.9.0.tgz#430d24822e82f7deb1e22a435bfa3999fae4ad64"
-  integrity sha512-k4E14HBtcLv0uqThaI6I/n1LEqROp8XaPu6SO9Z32u5NlGRC07Enu1Bh2KEFw4FNHbekH8yzbIU9kUGxbiGmCA==
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.11.0.tgz#f6d2238c1290d01c859a8b5c1f7d352a0b0da8b1"
+  integrity sha512-oB8cpLWSAjOVFEJhhyMZh6NOEOtBVziaqdDQ86+qhDHFbZXoRTM7pNSvFRfW/W/L/LrQ38C99J5CGuRBBzBsdA==
   dependencies:
     get-stdin "^6.0.0"
 
