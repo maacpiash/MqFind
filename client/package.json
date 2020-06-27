@@ -29,7 +29,7 @@
     "@types/react-dom": "^16.9.0",
     "eslint-config-react": "^1.1.7",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.9.5"
   },
   "eslintConfig": {
     "extends": "react-app"
