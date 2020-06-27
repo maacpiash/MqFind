@@ -15,7 +15,6 @@
     "start": "node out/server.js"
   },
   "dependencies": {
-    "@apollo/server": "^3.0.0-alpha.1",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.1",
