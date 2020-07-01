@@ -13,6 +13,7 @@
     "build:server": "lerna run --stream --scope @mqfind/server build",
     "clean": "lerna run --parallel clean",
     "dev": "lerna run --parallel dev",
+    "compose": "docker-compose up",
     "dev:client": "lerna run --stream --scope @mqfind/client dev",
     "dev:server": "lerna run --stream --scope @mqfind/server dev",
     "lint": "lerna run --parallel lint",
