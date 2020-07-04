@@ -14,7 +14,10 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { Server, Request } from '@hapi/hapi'
+import { Server, Request /*, ServerRegisterPluginObject*/ } from '@hapi/hapi'
+// import * as Inert from '@hapi/inert'
+// import * as Vision from '@hapi/vision'
+// import HapiSwagger from 'hapi-swagger'
 // import { ApolloServer } from '@apollo/server'
 // import { readFileSync } from 'fs'
 import querySchema from './validation'
@@ -27,6 +30,27 @@ const init = async (): Promise<void> => {
     host: process.env.HOST || 'localhost',
     routes: { cors: { origin: ['*'] } },
   })
+
+  // const swaggerOptions: HapiSwagger.RegisterOptions = {
+  //   info: {
+  //     title: 'Test API Documentation',
+  //   },
+  // }
+
+  // const plugins: Array<ServerRegisterPluginObject<any>> = [
+  //   {
+  //     plugin: Inert,
+  //   },
+  //   {
+  //     plugin: Vision,
+  //   },
+  //   {
+  //     plugin: HapiSwagger,
+  //     options: swaggerOptions,
+  //   },
+  // ]
+
+  // await server.register(plugins)
 
   server.route({
     method: 'GET',
