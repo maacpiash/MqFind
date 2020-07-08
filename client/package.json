@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Client-side software for MqFind: the React.js web app with forms, listings, and more!",
   "repository": "https://github.com/maacpiash/MqFind",
-  "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
+  "author": {
+    "name": "Mohammad Abdul Ahad Chowdhury",
+    "email": "ahad@maacpiash.com",
+    "url": "https://www.maacpiash.com"
+  },
   "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {

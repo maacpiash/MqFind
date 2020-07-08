@@ -4,7 +4,11 @@
   "description": "Server-side software for MqFind: the Hapi.js server with web scraper.",
   "main": "out/server.js",
   "repository": "https://github.com/maacpiash/MqFind",
-  "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
+  "author": {
+    "name": "Mohammad Abdul Ahad Chowdhury",
+    "email": "ahad@maacpiash.com",
+    "url": "https://www.maacpiash.com"
+  },
   "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {

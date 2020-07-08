@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Query listings of accommodation near Macquarie University campuses",
   "repository": "https://github.com/maacpiash/MqFind",
-  "author": "Mohammad Abdul Ahad Chowdhury <ahad@maacpiash.com> (https://www.maacpiash.com)",
+  "author": {
+    "name": "Mohammad Abdul Ahad Chowdhury",
+    "email": "ahad@maacpiash.com",
+    "url": "https://www.maacpiash.com"
+  },
   "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {
@@ -13,7 +17,7 @@
     "build:server": "lerna run --stream --scope @mqfind/server build",
     "clean": "lerna run --parallel clean",
     "dev": "lerna run --parallel dev",
-    "compose": "docker-compose up",
+    "compose:up": "docker-compose up",
     "dev:client": "lerna run --stream --scope @mqfind/client dev",
     "dev:server": "lerna run --stream --scope @mqfind/server dev",
     "lint": "lerna run --parallel lint",
