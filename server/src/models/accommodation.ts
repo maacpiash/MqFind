@@ -19,11 +19,11 @@ import { delimeter, scrapedKeys, WTF, CampusNames } from './constants'
 import { IBedroom, ILeaseDetails } from './interfaces'
 
 export class Accommodation {
-  title: string
+  title = ''
   suburb: string
   postcode: number
-  description: string
-  photoLink: string
+  description = ''
+  photoLinks: string[] = []
   vacancy: number
   distance: { [campusName in CampusNames]: number }
   leaseDetails: ILeaseDetails
@@ -44,18 +44,9 @@ export class Accommodation {
   prefGender: string[] = []
   shortStay: boolean
   commonAreasAccess: string[]
-  link: string
+  link = ''
 
-  constructor(
-    title: string,
-    address: string,
-    description: string,
-    values: string[],
-    link: string,
-    photoLink: string,
-    stats: string[][],
-  ) {
-    this.title = title
+  constructor(address: string, values: string[], stats: string[][]) {
     if (address !== '(No address found)') {
       const location = address.split(' • ')
       this.suburb = location[0]
@@ -65,9 +56,6 @@ export class Accommodation {
       this.suburb = ''
       this.postcode = 0
     }
-    this.description = description
-    this.link = link
-    this.photoLink = photoLink
     const dict: { [key: string]: string[] } = {}
     let k = 0
     for (let i = 0; i < values.length; i++) {
