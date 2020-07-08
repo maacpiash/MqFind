@@ -21,8 +21,8 @@ import { queryBuilder } from './models/interfaces'
 
 const init = async (): Promise<void> => {
   const server = new Server({
-    port: process.env.LISTEN_PORT || 4100,
-    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 4100,
+    host: process.env.HOST || '0.0.0.0',
     routes: { cors: { origin: ['*'] } },
   })
 
