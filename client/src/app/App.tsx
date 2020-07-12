@@ -15,7 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import App from './app/App'
+import Welcome from './components/Form'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+export default class AppComponent extends React.Component {
+  render() {
+    return <Welcome appName="MqFind" tools={['React.js', 'Webpack', 'FluentUI', 'Formik']} />
+  }
+}

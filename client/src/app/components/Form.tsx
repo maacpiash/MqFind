@@ -15,7 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import App from './app/App'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+type FormProps = {
+  appName: string
+  tools: string[]
+}
+
+export default class WelcomeComponent extends React.Component<FormProps, {}> {
+  render() {
+    const { appName, tools } = this.props
+    return <h1>Welcome to {appName} — built with {tools.join(', ')}!</h1>
+  }
+}

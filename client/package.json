@@ -11,43 +11,20 @@
   "license": "AGPL-3.0-only",
   "private": true,
   "scripts": {
-    "start": "PORT=4200 react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "webpack",
     "lint": "eslint **/*.tsx --fix"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.0",
-    "@material-ui/icons": "^4.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.0",
-    "@testing-library/react": "^10.4.3",
-    "@testing-library/user-event": "^12.0.11",
-    "@types/jest": "^26.0.3",
-    "@types/node": "^14.0.14",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
     "eslint-config-react": "^1.1.7",
-    "react-scripts": "3.4.1",
-    "typescript": "~3.9.5"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "source-map-loader": "^1.0.1",
+    "ts-loader": "^8.0.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   }
 }
