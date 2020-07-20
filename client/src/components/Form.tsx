@@ -26,7 +26,7 @@ import {
   initializeIcons,
   TextField,
 } from '@fluentui/react/lib'
-import { FormState } from '../types'
+import { FormProps, FormState } from '../types'
 
 const campuses: IDropdownOption[] = [
   { key: 'macquarie-university', text: 'North Ryde Campus' },
@@ -53,11 +53,6 @@ const numberKeys: FormStateKey[] = [
 
 const stringKeys: FormStateKey[] = ['housingOption', 'campusName']
 */
-type FormProps = {
-  initialState: FormState
-  setParams: (state: FormState) => void
-  fetchData: () => void
-}
 
 class Form extends React.Component<FormProps, FormState> {
   constructor(props: any) {
