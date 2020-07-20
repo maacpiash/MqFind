@@ -18,8 +18,8 @@
     "lint": "eslint **/*.tsx --fix"
   },
   "dependencies": {
-    "@material-ui/core": "^4.9.0",
-    "@material-ui/icons": "^4.5.1",
+    "@fluentui/react": "^7.123.3",
+    "formik": "^2.1.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
