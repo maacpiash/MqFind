@@ -1,16 +1,16 @@
 /*
  * MqFind: Query listings of accommodation near Macquarie University campuses
  * Copyright (C) 2020  Mohammad Abdul Ahad Chowdhury
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License version 3,
  * as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
@@ -29,7 +29,7 @@ import {
   Typography,
 } from '@material-ui/core'
 import { Delimeter } from './Atomics'
-import { FormState, IMenuItem } from '../types'
+import { FormProps, FormState, IMenuItem } from '../types'
 
 const styles = {
   grid_container: {
@@ -67,7 +67,6 @@ const numberKeys: FormStateKey[] = [
 
 const stringKeys: FormStateKey[] = ['housingOption', 'campusName']
 
-
 const updateState = <T extends string | number>(
   key: keyof FormState,
   value: T,
@@ -80,12 +79,6 @@ const updateState = <T extends string | number>(
     : Boolean(value),
 })
 
-type FormProps = {
-  initialState: FormState
-  setParams: (state: FormState) => void
-  fetchData: () => void
-}
-
 export default class Form extends React.Component<FormProps, FormState> {
   constructor(props: any) {
     super(props)
@@ -93,7 +86,9 @@ export default class Form extends React.Component<FormProps, FormState> {
   }
 
   handleChange(key: FormStateKey, event: any): void {
-    this.setState(updateState(key, event.target.value), () => this.props.setParams(this.state))
+    this.setState(updateState(key, event.target.value), () =>
+      this.props.setParams(this.state),
+    )
   }
 
   handleSubmit(): void {
@@ -141,7 +136,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                     value={housingOption}
                     onChange={this.handleChange.bind(this, 'housingOption')}
                   >
-                    {housingOptions.map(option => (
+                    {housingOptions.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>
@@ -162,7 +157,7 @@ export default class Form extends React.Component<FormProps, FormState> {
                     value={campusName}
                     onChange={this.handleChange.bind(this, 'campusName')}
                   >
-                    {campuses.map(option => (
+                    {campuses.map((option) => (
                       <MenuItem key={option.value} value={option.value}>
                         {option.label}
                       </MenuItem>
