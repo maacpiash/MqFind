@@ -24,15 +24,9 @@ const querySchema = object({
   campusName: string()
     .valid(CampusNames.City, CampusNames.NorthRyde)
     .required(),
-  maxRent: number()
-    .integer()
-    .min(0)
-    .default(200)
-    .required(),
+  maxRent: number().integer().min(0).default(200).required(),
   suburb: string(),
-  postcode: number()
-    .min(1001)
-    .max(3707), // https://postcodes-australia.com/state-postcodes/nsw
+  postcode: number().min(1001).max(3707), // https://postcodes-australia.com/state-postcodes/nsw
   bathroom: number().min(1),
   ensuite: bool(),
   leaseMin: number().min(1),
