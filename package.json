@@ -26,10 +26,7 @@
     "start:client": "lerna run --stream --scope @mqfind/client start",
     "start:server": "lerna run --stream --scope @mqfind/server start"
   },
-  "workspaces": [
-    "client",
-    "server"
-  ],
+  "workspaces": ["packages/*"],
   "devDependencies": {
     "@types/node": "^13.1.6",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
