@@ -18,6 +18,8 @@ export type FormState = {
   housingOption: string
   campusName: string
   maxRent: number
+  suburb?: string
+  postcode?: string
   bathroom?: number
   ensuite?: boolean
   leaseMin?: number

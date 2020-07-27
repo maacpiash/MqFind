@@ -16,41 +16,26 @@
  */
 import * as React from 'react'
 import {
-  Button,
+  Stack,
+  IStackTokens,
+  DefaultButton,
+  PrimaryButton,
   Checkbox,
-  CssBaseline,
-  Container,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  MenuItem,
-  FormLabel,
+  Dropdown,
+  IDropdownOption,
   TextField,
-  Typography,
-} from '@material-ui/core'
-import { Delimeter } from './Atomics'
-import { FormProps, FormState, IMenuItem } from '../types'
+  initializeIcons,
+} from '@fluentui/react/lib'
+import { FormProps, FormState } from '../types'
 
-const styles = {
-  grid_container: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    padding: '10px',
-  },
-  grid_item: {
-    padding: '10px',
-    fontSize: '30px',
-  },
-}
-
-const campuses: IMenuItem[] = [
-  { value: 'macquarie-university', label: 'North Ryde Campus' },
-  { value: 'macquarie-university-city', label: 'City Campus' },
+const campuses: IDropdownOption[] = [
+  { key: 'macquarie-university', text: 'North Ryde Campus' },
+  { key: 'macquarie-university-city', text: 'City Campus' },
 ]
 
-const housingOptions: IMenuItem[] = [
-  { value: 'properties', label: 'Properties' },
-  { value: 'rooms', label: 'Rooms' },
+const housingOptions: IDropdownOption[] = [
+  { key: 'properties', text: 'Properties' },
+  { key: 'rooms', text: 'Rooms' },
 ]
 
 type FormStateKey = keyof FormState
@@ -65,7 +50,12 @@ const numberKeys: FormStateKey[] = [
   'bedroom',
 ]
 
-const stringKeys: FormStateKey[] = ['housingOption', 'campusName']
+const stringKeys: FormStateKey[] = [
+  'housingOption',
+  'campusName',
+  'suburb',
+  'postcode',
+]
 
 const updateState = <T extends string | number>(
   key: keyof FormState,
@@ -79,10 +69,21 @@ const updateState = <T extends string | number>(
     : Boolean(value),
 })
 
+const childStack: IStackTokens = {
+  childrenGap: 10,
+  maxWidth: 300,
+}
+
+const parentStack: IStackTokens = {
+  childrenGap: 20,
+  maxWidth: 1000,
+}
+
 export default class Form extends React.Component<FormProps, FormState> {
   constructor(props: any) {
     super(props)
     this.state = props.initialState
+    initializeIcons()
   }
 
   handleChange(key: FormStateKey, event: any): void {
@@ -96,307 +97,107 @@ export default class Form extends React.Component<FormProps, FormState> {
   }
 
   render() {
-    const {
-      housingOption,
-      campusName,
-      maxRent,
-      bathroom,
-      ensuite,
-      leaseMin,
-      leaseMax,
-      distanceMax,
-      vacancy,
-      bedroom,
-      heating,
-      cooling,
-      internet,
-      cantSmoke,
-      female,
-      male,
-      wheelchairAccess,
-    } = this.state
+    const { housingOption, campusName, maxRent } = this.state
     return (
-      <Container component="main">
-        <div>
-          <div>
-            <div style={styles.grid_container}>
-              <div style={styles.grid_item}>
-                <Typography component="h1" variant="h5">
-                  Mandatory fields
-                </Typography>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="select-housing-type"
-                    name="housingOption"
-                    select
-                    error={!housingOption}
-                    variant="outlined"
-                    label="Housing Type"
-                    value={housingOption}
-                    onChange={this.handleChange.bind(this, 'housingOption')}
-                  >
-                    {housingOptions.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="select-campus"
-                    name="campusName"
-                    select
-                    error={!campusName}
-                    fullWidth
-                    className="row align-items-center"
-                    variant="outlined"
-                    label="Campus Name"
-                    value={campusName}
-                    onChange={this.handleChange.bind(this, 'campusName')}
-                  >
-                    {campuses.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-max-rent"
-                    type="number"
-                    name="maxRent"
-                    error={!maxRent}
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Maximum weekly rent"
-                    value={maxRent}
-                    onChange={this.handleChange.bind(this, 'maxRent')}
-                    placeholder="AUD"
-                  />
-                </FormControl>
-                <Delimeter />
-                <Typography component="h4" variant="h5">
-                  Optional fields
-                </Typography>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-min-bathroom"
-                    name="bathroom"
-                    type="number"
-                    variant="outlined"
-                    label="Minimum bathroom(s)"
-                    value={bathroom}
-                    onChange={this.handleChange.bind(this, 'bathroom')}
-                    helperText="Minimum number of bathrooms needed"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-min-lease"
-                    name="maxLease"
-                    type="number"
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Minimum Lease"
-                    value={leaseMin}
-                    onChange={this.handleChange.bind(this, 'leaseMin')}
-                    helperText="Minimum number of months of lease"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-max-lease"
-                    name="maxLease"
-                    type="number"
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Maximum Lease"
-                    value={leaseMax}
-                    onChange={this.handleChange.bind(this, 'leaseMax')}
-                    helperText="Maximum number of months for lease"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-max-distance"
-                    name="distanceMax"
-                    type="number"
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Maximum Distance"
-                    value={distanceMax}
-                    onChange={this.handleChange.bind(this, 'distanceMax')}
-                    helperText="Maximum distance from campus (km)"
-                  />
-                </FormControl>
-              </div>
-              <div style={styles.grid_item}>
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-vacancy"
-                    name="vacancy"
-                    type="number"
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Vacancy"
-                    value={vacancy}
-                    onChange={this.handleChange.bind(this, 'vacancy')}
-                    helperText="Minimum number of vacancy"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <TextField
-                    id="text-bedroom"
-                    name="bedroom"
-                    type="number"
-                    variant="outlined"
-                    className="row align-items-center"
-                    label="Bedroom(s)"
-                    value={bedroom}
-                    onChange={this.handleChange.bind(this, 'bedroom')}
-                    helperText="Minimum number of bedroom(s)"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={heating}
-                        onChange={this.handleChange.bind(this, 'heating')}
-                        value="heating"
-                        color="primary"
-                      />
-                    }
-                    label="Heating"
-                  />
-                </FormControl>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={cooling}
-                        onChange={this.handleChange.bind(this, 'cooling')}
-                        value="cooling"
-                        color="primary"
-                      />
-                    }
-                    label="Cooling"
-                  />
-                </FormControl>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={ensuite}
-                        onChange={this.handleChange.bind(this, 'ensuite')}
-                        value="ensuite"
-                        color="primary"
-                      />
-                    }
-                    label="Ensuite"
-                  />
-                </FormControl>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={internet}
-                        onChange={this.handleChange.bind(this, 'internet')}
-                        value="internet"
-                        color="primary"
-                      />
-                    }
-                    label="Internet"
-                  />
-                </FormControl>
-                <br />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={cantSmoke}
-                        onChange={this.handleChange.bind(this, 'cantSmoke')}
-                        value="ensuite"
-                        color="primary"
-                      />
-                    }
-                    label="No smoking"
-                  />
-                </FormControl>
-                <Delimeter />
-                <FormControl component="fieldset">
-                  <FormLabel component="legend">Gender of tenants</FormLabel>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={female}
-                          onChange={this.handleChange.bind(this, 'female')}
-                          value="female"
-                        />
-                      }
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={male}
-                          onChange={this.handleChange.bind(this, 'male')}
-                          value="male"
-                        />
-                      }
-                      label="Male"
-                    />
-                  </FormGroup>
-                </FormControl>
-                <Delimeter />
-                <FormControl style={{ minWidth: 300 }}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={wheelchairAccess}
-                        onChange={this.handleChange.bind(
-                          this,
-                          'wheelchairAccess',
-                        )}
-                        value="wheelchairAccess"
-                        color="primary"
-                      />
-                    }
-                    label="Wheelchair Access"
-                  />
-                </FormControl>
-                <br />
-                <div style={{ margin: '5 px' }}>
-                  <Button
-                    variant="outlined"
-                    disabled={!housingOption || !campusName || !maxRent}
-                    color="primary"
-                    className="row align-items-center"
-                    onClick={this.handleSubmit.bind(this)}
-                  >
-                    View Housing Options
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
+      <form onSubmit={console.log}>
+        <Stack horizontal tokens={parentStack}>
+          <Stack tokens={childStack}>
+            <Dropdown
+              options={housingOptions}
+              label="Find"
+              defaultSelectedKey="rooms"
+              onChange={this.handleChange.bind(this, 'housingOption')}
+            />
+            <Dropdown
+              options={campuses}
+              label="Near"
+              defaultSelectedKey="macquarie-university"
+              onChange={this.handleChange.bind(this, 'campusName')}
+            />
+            <TextField
+              id="maxRent"
+              label="For up to"
+              onChange={this.handleChange.bind(this, 'maxRent')}
+              errorMessage={
+                !maxRent ? 'Please provide a valid value' : undefined
+              }
+              defaultValue="200"
+              prefix="$"
+              suffix="/ week"
+            />
+            <TextField
+              id="suburb"
+              label="Suburb (separate with commas)"
+              iconProps={{ iconName: 'MapPin' }}
+              onChange={this.handleChange.bind(this, 'suburb')}
+            />
+            <TextField
+              id="postcode"
+              label="Postcode"
+              iconProps={{ iconName: 'Location' }}
+              onChange={this.handleChange.bind(this, 'postcode')}
+            />
+            <TextField
+              id="bathroom"
+              label="Bathroom"
+              iconProps={{ iconName: 'NumberSymbol' }}
+              onChange={this.handleChange.bind(this, 'bathroom')}
+            />
+          </Stack>
+          <Stack tokens={childStack}>
+            <TextField
+              id="leaseMin"
+              label="Minimum lease"
+              suffix="months"
+              onChange={this.handleChange.bind(this, 'leaseMin')}
+            />
+            <TextField
+              id="leaseMax"
+              label="Maximum lease"
+              suffix="months"
+              onChange={this.handleChange.bind(this, 'leaseMax')}
+            />
+            <TextField
+              id="distanceMax"
+              label="Maximum distance from campus"
+              iconProps={{ iconName: 'MapDirections' }}
+              onChange={this.handleChange.bind(this, 'distanceMax')}
+            />
+            <TextField
+              id="vacancy"
+              label="Vacancy"
+              iconProps={{ iconName: 'UserOptional' }}
+              onChange={this.handleChange.bind(this, 'vacancy')}
+            />
+            <TextField
+              id="bedroom"
+              label="Number of room(s)"
+              iconProps={{ iconName: 'Room' }}
+              onChange={this.handleChange.bind(this, 'bedroom')}
+            />
+            {/* <Dropdown
+              selectedKey={selectedItem ? selectedItem.key : undefined}
+              onChange={onChange}
+              options={dropdownControlledExampleOptions}
+              styles={dropdownStyles}
+            /> */}
+          </Stack>
+          <Stack tokens={childStack}>
+            <Checkbox
+              label="Ensuite"
+              onChange={this.handleChange.bind(this, 'ensuite')}
+            />
+            <Stack horizontal tokens={childStack}>
+              <DefaultButton text="Reset" />
+              <PrimaryButton
+                text="Submit"
+                disabled={!(housingOption && campusName && maxRent)}
+                onClick={console.log}
+              />
+            </Stack>
+          </Stack>
+        </Stack>
+      </form>
     )
   }
 }
