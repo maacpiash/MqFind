@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import * as React from 'react'
-import Form from './Form'
+import Form from './form'
 import { AppState, FormState } from '../types'
 import urlBuilder from '../urlBuilder'
 
@@ -31,7 +31,7 @@ export default class App extends React.Component<{}, AppState> {
       formFields,
       apiUrl: urlBuilder('http://localhost:4100/', formFields),
       showForm: true,
-      options: []
+      options: [],
     }
   }
 
@@ -57,7 +57,9 @@ export default class App extends React.Component<{}, AppState> {
 
   fetchData(): void {
     const { apiUrl } = this.state
-    fetch(apiUrl).then(response => response.json()).then(console.log)
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then(console.log)
   }
 
   render() {

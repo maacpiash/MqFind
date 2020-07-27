@@ -26,7 +26,9 @@ import {
   TextField,
   initializeIcons,
 } from '@fluentui/react/lib'
-import { FormProps, FormState } from '../types'
+import { FormProps, FormState } from '../../types'
+import SelectGenders from './SelectGenders'
+import { Scaffold } from '../Wrappers'
 
 const campuses: IDropdownOption[] = [
   { key: 'macquarie-university', text: 'North Ryde Campus' },
@@ -69,14 +71,14 @@ const updateState = <T extends string | number>(
     : Boolean(value),
 })
 
-const childStack: IStackTokens = {
-  childrenGap: 10,
+const horiStackTokens: IStackTokens = {
+  childrenGap: 15,
   maxWidth: 300,
 }
 
-const parentStack: IStackTokens = {
-  childrenGap: 20,
-  maxWidth: 1000,
+const vertStackTokens: IStackTokens = {
+  childrenGap: 10,
+  maxWidth: 300,
 }
 
 export default class Form extends React.Component<FormProps, FormState> {
@@ -84,6 +86,11 @@ export default class Form extends React.Component<FormProps, FormState> {
     super(props)
     this.state = props.initialState
     initializeIcons()
+  }
+
+  handleReset(e: any) {
+    e.preventDefault()
+    e.target.reset()
   }
 
   handleChange(key: FormStateKey, event: any): void {
@@ -99,9 +106,14 @@ export default class Form extends React.Component<FormProps, FormState> {
   render() {
     const { housingOption, campusName, maxRent } = this.state
     return (
-      <form onSubmit={console.log}>
-        <Stack horizontal tokens={parentStack}>
-          <Stack tokens={childStack}>
+      <form
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault()
+          console.log(e)
+        }}
+      >
+        <Scaffold>
+          <Stack tokens={vertStackTokens} style={{ margin: '10px' }}>
             <Dropdown
               options={housingOptions}
               label="Find"
@@ -116,6 +128,7 @@ export default class Form extends React.Component<FormProps, FormState> {
             />
             <TextField
               id="maxRent"
+              // componentRef={}
               label="For up to"
               onChange={this.handleChange.bind(this, 'maxRent')}
               errorMessage={
@@ -144,7 +157,7 @@ export default class Form extends React.Component<FormProps, FormState> {
               onChange={this.handleChange.bind(this, 'bathroom')}
             />
           </Stack>
-          <Stack tokens={childStack}>
+          <Stack tokens={vertStackTokens} style={{ margin: '10px' }}>
             <TextField
               id="leaseMin"
               label="Minimum lease"
@@ -160,7 +173,7 @@ export default class Form extends React.Component<FormProps, FormState> {
             <TextField
               id="distanceMax"
               label="Maximum distance from campus"
-              iconProps={{ iconName: 'MapDirections' }}
+              suffix="km"
               onChange={this.handleChange.bind(this, 'distanceMax')}
             />
             <TextField
@@ -176,27 +189,30 @@ export default class Form extends React.Component<FormProps, FormState> {
               onChange={this.handleChange.bind(this, 'bedroom')}
             />
             {/* <Dropdown
-              selectedKey={selectedItem ? selectedItem.key : undefined}
-              onChange={onChange}
-              options={dropdownControlledExampleOptions}
-              styles={dropdownStyles}
-            /> */}
+                    selectedKey={selectedItem ? selectedItem.key : undefined}
+                    onChange={onChange}
+                    options={dropdownControlledExampleOptions}
+                    styles={dropdownStyles}
+                  /> */}
           </Stack>
-          <Stack tokens={childStack}>
+          <Stack tokens={vertStackTokens} style={{ margin: '10px' }}>
+            <SelectGenders />
             <Checkbox
               label="Ensuite"
               onChange={this.handleChange.bind(this, 'ensuite')}
             />
-            <Stack horizontal tokens={childStack}>
-              <DefaultButton text="Reset" />
+            <Stack horizontal tokens={horiStackTokens}>
+              {/* Buttons */}
+              <DefaultButton text="Reset" onClick={this.handleReset} />
               <PrimaryButton
                 text="Submit"
+                type="submit"
                 disabled={!(housingOption && campusName && maxRent)}
-                onClick={console.log}
+                // onClick={console.log}
               />
             </Stack>
           </Stack>
-        </Stack>
+        </Scaffold>
       </form>
     )
   }
