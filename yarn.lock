@@ -1259,12 +1259,12 @@
     tslib "^1.10.0"
 
 "@fluentui/react@^7.123.8":
-  version "7.123.8"
-  resolved "https://registry.yarnpkg.com/@fluentui/react/-/react-7.123.8.tgz#2ca5110ae453d52c2ff2547ce73554d677db0d3e"
-  integrity sha512-XIX33kvexm5VHaUlCk4BLc2a70w/w2k8TiePng4XN+Fey7VJ9kmmE4eZ3pSs6dF6exTQmj4KoHoLUaZduQP5bQ==
+  version "7.124.0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react/-/react-7.124.0.tgz#696af78a481812d8929e5eddf42cab4b42587268"
+  integrity sha512-5zv1efxeOxiPucLl3QO2SdnDS4q3Ah0MP9L+JXUsnd4U1VnyboeRanUZmip6XJD/jEijYvC3ww8x8DL54ca06w==
   dependencies:
     "@uifabric/set-version" "^7.0.18"
-    office-ui-fabric-react "^7.123.9"
+    office-ui-fabric-react "^7.124.0"
     tslib "^1.10.0"
 
 "@hapi/accept@^5.0.1":
@@ -9983,10 +9983,10 @@ octokit-pagination-methods@^1.1.0:
   resolved "https://registry.yarnpkg.com/octokit-pagination-methods/-/octokit-pagination-methods-1.1.0.tgz#cf472edc9d551055f9ef73f6e42b4dbb4c80bea4"
   integrity sha512-fZ4qZdQ2nxJvtcasX7Ghl+WlWS/d9IgnBIwFZXVNNZUmzpno91SX5bc5vuxiuKoCtK78XxGGNuSCrDC7xYB3OQ==
 
-office-ui-fabric-react@^7.123.9:
-  version "7.123.9"
-  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-7.123.9.tgz#0832bd6e768eb444f148e46b2e989c96836da4bb"
-  integrity sha512-ylnWbPE22MUoRcMWzyyN5SLXbkSo5qblUWYU6MHu2Dh1BOwQNFWh2VwWgDykcT4szk0cYwaBrK5TBInCvdc0Dw==
+office-ui-fabric-react@^7.124.0:
+  version "7.124.0"
+  resolved "https://registry.yarnpkg.com/office-ui-fabric-react/-/office-ui-fabric-react-7.124.0.tgz#f10f4c9ef4d1619fcc73bf88baed67799e02d111"
+  integrity sha512-59nS0v3OtbguHG8kIODgtF0XRURaedKv1vcBGwUmIwpq8SF7RZ8yIe+lJrMC9Jj33btRY9yRAFPvgHoPYL5IDA==
   dependencies:
     "@fluentui/date-time-utilities" "^7.3.0"
     "@fluentui/react-focus" "^7.12.25"
