@@ -10,6 +10,10 @@
   },
   "license": "AGPL-3.0-only",
   "private": true,
+  "bugs": {
+    "url": "https://github.com/maacpiash/MqFind/issues",
+    "email": "ahad@maacpiash.com"
+  },
   "scripts": {
     "start": "cross-env PORT=4200 react-scripts start",
     "build": "react-scripts build",

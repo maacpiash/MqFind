@@ -10,6 +10,10 @@
   },
   "license": "AGPL-3.0-only",
   "private": true,
+  "bugs": {
+    "url": "https://github.com/maacpiash/MqFind/issues",
+    "email": "ahad@maacpiash.com"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run --parallel build",
