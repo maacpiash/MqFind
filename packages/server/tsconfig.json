@@ -1,26 +1,21 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es5",
     "module": "commonjs",
     "outDir": "./out",
     "declaration": false,
-    "strict": true,
-    "esModuleInterop": true,
     "importHelpers": true,
     "noImplicitThis": false,
     "noImplicitAny": true,
     "strictPropertyInitialization": true,
     "baseUrl": "../",
     "paths": {
-      "tslib" : ["node_modules/tslib/tslib.d.ts"]
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
     }
   },
   "include": [
     "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "out",
-    "tests"
   ]
 }
