@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/cheerio": "^0.22.15",
     "@types/hapi__hapi": "^19.0.2",
-    "@types/hapi__joi": "^16.0.12",
+    "@types/hapi__joi": "^17.1.4",
     "@types/moment-timezone": "^0.5.13",
     "nodemon": "^2.0.2",
     "rimraf": "^3.0.2",
