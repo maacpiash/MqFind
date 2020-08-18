@@ -31,8 +31,7 @@ export type FormState = {
   cooling?: boolean
   internet?: boolean
   cantSmoke?: boolean
-  female?: boolean
-  male?: boolean
+  prefGender?: string[]
   wheelchairAccess?: boolean
 }
 

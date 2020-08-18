@@ -35,22 +35,10 @@ export default class App extends React.Component<{}, AppState> {
     }
   }
 
-  refine(optionalFields: FormState): any {
-    const { female, male } = optionalFields
-    const prefGender: string[] = []
-    if (female) prefGender.push('F')
-    if (male) prefGender.push('M')
-    const newObj: any = { ...optionalFields, prefGender }
-    delete newObj.female
-    delete newObj.male
-    return newObj
-  }
-
   setParams(state: FormState): void {
     this.setState({ formFields: state }, () => {
       const fields = this.state.formFields
-      const newFields = this.refine(fields)
-      const apiUrl = urlBuilder('http://localhost:4100/', newFields)
+      const apiUrl = urlBuilder('http://localhost:4100/', fields)
       this.setState({ apiUrl })
     })
   }
