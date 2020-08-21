@@ -1,16 +1,16 @@
 /*
  * MqFind: Query listings of accommodation near Macquarie University campuses
  * Copyright (C) 2020  Mohammad Abdul Ahad Chowdhury
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License version 3,
  * as published by the Free Software Foundation.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
@@ -84,11 +84,7 @@ export default async function getPageParsed(
 ): Promise<IResponse> {
   const baseUrl = urlBuilder(house, campus, max, pageNum, orderOption)
   const $ = await parsePage(baseUrl)
-  const numberOfOptions = Number(
-    $('div.mb-3 > strong')
-      .text()
-      .split(' ')[0],
-  )
+  const numberOfOptions = Number($('div.mb-3 > strong').text().split(' ')[0])
   const pageNumber = pageNum ?? 1
   const links: string[] = getUrls($)
   return { numberOfOptions, pageNumber, links } as IResponse
@@ -96,7 +92,7 @@ export default async function getPageParsed(
 
 function getUrls(pageContent: CheerioStatic): string[] {
   const links: string[] = []
-  pageContent('div.card-body > a').each(function() {
+  pageContent('div.card-body > a').each(function () {
     links.push(BASE_URL + pageContent(this).attr('href'))
   })
   return links

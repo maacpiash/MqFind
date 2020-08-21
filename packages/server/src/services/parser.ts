@@ -24,20 +24,11 @@ export default async function getPageParsed(url: string): Promise<any> {
   const $ = load(content.data)
   const tds = $('tbody > tr > td')
     .toArray()
-    .map(item =>
-      $(item)
-        .text()
-        .trim(),
-    )
+    .map(item => $(item).text().trim())
     .filter(p => p)
   const stats = $('div.stat')
     .toArray()
-    .map(item =>
-      $(item)
-        .text()
-        .trim()
-        .split(' '),
-    )
+    .map(item => $(item).text().trim().split(' '))
     .map(t => t.filter(p => p).map(d => d.trim()))
   const title =
     ($('h1.listing-title').text() ?? '').trim() || '(No title found)'
