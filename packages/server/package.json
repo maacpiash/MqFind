@@ -27,8 +27,7 @@
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.1",
     "cheerio": "^1.0.0-rc.3",
-    "moment-timezone": "^0.5.27",
-    "tslib": "^2.0.0"
+    "moment-timezone": "^0.5.27"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.15",

@@ -4,16 +4,10 @@
     "module": "commonjs",
     "outDir": "./out",
     "declaration": false,
-    "importHelpers": true,
     "noImplicitThis": false,
     "noImplicitAny": true,
     "strictPropertyInitialization": true,
-    "baseUrl": "../",
-    "paths": {
-      "tslib": [
-        "node_modules/tslib/tslib.d.ts"
-      ]
-    }
+    "baseUrl": "../"
   },
   "include": [
     "src"
