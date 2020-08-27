@@ -23,9 +23,9 @@
     "start": "node out/server.js"
   },
   "dependencies": {
-    "@mqfind/common": "1.0.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
+    "@mqfind/common": "1.0.0",
     "axios": "^0.19.1",
     "cheerio": "^1.0.0-rc.3",
     "moment-timezone": "^0.5.27"
@@ -34,7 +34,6 @@
     "@types/cheerio": "^0.22.15",
     "@types/hapi__hapi": "^19.0.2",
     "@types/hapi__joi": "^17.1.4",
-    "@types/moment-timezone": "^0.5.13",
     "nodemon": "^2.0.2",
     "rimraf": "^3.0.2",
     "ts-node": "^8.6.2"
