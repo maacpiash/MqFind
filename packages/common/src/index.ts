@@ -14,20 +14,5 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-export default function urlBuilder(
-  baseUrl: string,
-  params: any,
-): string {
-  const query: string[] = []
-  for (const k in params) {
-    if (params[k]) {
-      if (k !== 'prefGender')
-        query.push(`${k}=${params[k]}`)
-      else {
-        const arr = params[k] as string[]
-        if (arr.length) query.push(`${k}=${params[k]}`)
-      }
-    }
-  }
-  return baseUrl + '?' + query.join('&')
-}
+export { CampusNames, HousingOptions, OrderOptions, BASE_URL, scrapedKeys, delimeter, WTF, OptionsPerPage } from './constants'
+export { IBedroom, ILeaseDetails, IResponse, IQuery, IAccommodation } from './interfaces'

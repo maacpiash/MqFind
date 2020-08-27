@@ -17,7 +17,7 @@
 import { Server, Request } from '@hapi/hapi'
 import querySchema from './validation'
 import GetDetails from './services'
-import { queryBuilder } from './models/interfaces'
+import { queryBuilder } from './helpers'
 
 const init = async (): Promise<void> => {
   const server = new Server({

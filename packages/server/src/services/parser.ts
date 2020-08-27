@@ -16,7 +16,7 @@
  */
 import axios from 'axios'
 import { load } from 'cheerio'
-import { Accommodation } from '../models/accommodation'
+import { makeAccommodationObject } from '../helpers'
 
 export default async function getPageParsed(url: string): Promise<any> {
   const content = await axios(url)
@@ -42,7 +42,7 @@ export default async function getPageParsed(url: string): Promise<any> {
     .filter(url => url.includes('thumb'))
     .map(url => 'https:' + url.replace('thumb', 'big'))
   const accommodation = {
-    ...new Accommodation(address, tds, stats),
+    ...makeAccommodationObject(address, tds, stats),
     title,
     description,
     link: url,

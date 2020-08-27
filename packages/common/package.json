@@ -1,0 +1,22 @@
+{
+  "name": "@mqfind/common",
+  "version": "1.0.0",
+  "description": "Shared code between packages of MqFind",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "author": {
+    "name": "Mohammad Abdul Ahad Chowdhury",
+    "email": "ahad@maacpiash.com",
+    "url": "https://www.maacpiash.com"
+  },
+  "license": "AGPL-3.0-only",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/maacpiash/MqFind/issues",
+    "email": "ahad@maacpiash.com"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}

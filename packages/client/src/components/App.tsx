@@ -15,6 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import * as React from 'react'
+import { HousingOptions, CampusNames } from '@mqfind/common'
 import Form from './form'
 import { AppState, FormState } from '../types'
 import urlBuilder from '../urlBuilder'
@@ -23,8 +24,8 @@ export default class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props)
     const formFields: FormState = {
-      housingOption: 'rooms',
-      campusName: 'macquarie-university',
+      housingOption: HousingOptions.Rooms,
+      campusName: CampusNames.NorthRyde,
       maxRent: 200,
     }
     this.state = {

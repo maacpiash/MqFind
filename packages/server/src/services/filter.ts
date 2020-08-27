@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { Accommodation } from '../models/accommodation'
-import { IQuery } from '../models/interfaces'
-import { cleanUpText } from '../models/helpers'
+
+import { IAccommodation, IQuery } from '@mqfind/common'
+import { cleanUpText } from '../helpers'
 
 export default function filterAccommodation(
-  option: number | Accommodation,
+  option: number | IAccommodation,
   query: IQuery,
 ): boolean {
   const {

@@ -16,13 +16,13 @@
  */
 import axios from 'axios'
 import { load } from 'cheerio'
-import { IResponse } from '../models/interfaces'
 import {
   BASE_URL,
+  IResponse,
   CampusNames,
   HousingOptions,
   OrderOptions,
-} from '../models/constants'
+} from '@mqfind/common'
 
 const queryUrl = BASE_URL + '/Listings/Search?'
 

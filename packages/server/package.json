@@ -23,6 +23,7 @@
     "start": "node out/server.js"
   },
   "dependencies": {
+    "@mqfind/common": "1.0.0",
     "@hapi/hapi": "^19.1.1",
     "@hapi/joi": "^17.1.1",
     "axios": "^0.19.1",

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import { object, string, number, bool } from '@hapi/joi'
-import { CampusNames, HousingOptions } from './models/constants'
+import { CampusNames, HousingOptions } from '@mqfind/common'
 
 const querySchema = object({
   housingOption: string()

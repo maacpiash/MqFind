@@ -14,26 +14,9 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-export type FormState = {
-  housingOption: string
-  campusName: string
-  maxRent: number
-  suburb?: string
-  postcode?: string
-  bathroom?: number
-  ensuite?: boolean
-  leaseMin?: number
-  leaseMax?: number
-  distanceMax?: number
-  vacancy?: number
-  bedroom?: number
-  heating?: boolean
-  cooling?: boolean
-  internet?: boolean
-  cantSmoke?: boolean
-  prefGender?: string[]
-  wheelchairAccess?: boolean
-}
+import { IQuery } from '@mqfind/common'
+
+export type FormState = IQuery
 
 export type FormProps = {
   initialState: FormState
