@@ -18,9 +18,14 @@ rules:
   '@typescript-eslint/no-explicit-any':
     - off
     - never
-  '@typescript-eslint/interface-name-prefix':
-    - warn
-    - always
+  '@typescript-eslint/naming-convention':
+    - error
+    - selector: interface
+      format:
+      - PascalCase
+      custom:
+        regex: "^I[A-Z]"
+        match: false
   '@typescript-eslint/no-use-before-define':
     - off
     - never
