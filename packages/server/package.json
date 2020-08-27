@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.15",
-    "@types/hapi__hapi": "^19.0.2",
+    "@types/hapi__hapi": "^20.0.0",
     "@types/hapi__joi": "^17.1.4",
     "nodemon": "^2.0.2",
     "rimraf": "^3.0.2",
