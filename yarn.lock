@@ -1281,6 +1281,7 @@
   version "7.132.0"
   resolved "https://registry.yarnpkg.com/@fluentui/react/-/react-7.132.0.tgz#83a4ef79e1bb6e606b86e796a1b3eae6ac452705"
   integrity sha512-k2ZMkhUJt+wmJPEZUyWi6oiM3NlXT5zWfF0yEEKJlGeFm55Q1OGr5XdflR5Crd9CYE+zoUN7PoYe3NGebdsIUA==
+
   dependencies:
     "@uifabric/set-version" "^7.0.22"
     office-ui-fabric-react "^7.132.0"
