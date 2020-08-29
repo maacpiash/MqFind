@@ -2744,21 +2744,21 @@
   resolved "https://registry.yarnpkg.com/@types/hapi__catbox/-/hapi__catbox-10.2.2.tgz#b13fbdd6006c8793eb80919158593bc2bf8307c4"
   integrity sha512-AWK70LgRsRWL1TNw+aT0IlS56E0pobvFdr/en0K8XazyK4Ey6T/jXhQqv/iQ6FJAAU+somMzgmt9fWq2TaaOkA==
 
-"@types/hapi__hapi@^19.0.2":
-  version "19.0.4"
-  resolved "https://registry.yarnpkg.com/@types/hapi__hapi/-/hapi__hapi-19.0.4.tgz#d0ea21871fd234c49ab58cf97af6a2c3b5c1a3e2"
-  integrity sha512-v+CW2urqOVxSH4aw72R6zY0QdhIRFPiJL76xzGIlM26uoxZGAyEeLwfhvxaPy4cXZMHu0QwQbn6/9JSTZsFB9Q==
+"@types/hapi__hapi@^20.0.0":
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/@types/hapi__hapi/-/hapi__hapi-20.0.0.tgz#bc83f9589f7be39ecb31fcff9d961c279c9923d0"
+  integrity sha512-Yh/ZNoGcwHTggd/JoeH0DMpwb3Hotw299kjEmFv3WQv+gSi4B6EWQ0tvZx6109JoongCz6HSdnCFKweMEw2G3g==
   dependencies:
     "@hapi/boom" "^9.0.0"
     "@hapi/iron" "^6.0.0"
     "@types/hapi__catbox" "*"
-    "@types/hapi__joi" "*"
     "@types/hapi__mimos" "*"
     "@types/hapi__podium" "*"
     "@types/hapi__shot" "*"
+    "@types/joi" "*"
     "@types/node" "*"
 
-"@types/hapi__joi@*", "@types/hapi__joi@^17.1.4":
+"@types/hapi__joi@^17.1.4":
   version "17.1.4"
   resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-17.1.4.tgz#e46cd1bd81d25cd45247d652dadb3666514d807c"
   integrity sha512-gqY3TeTyZvnyNhM02HgyCIoGIWsTFMnuzMfnD8evTsr1KIfueGJaz+QC77j+dFvhZ5cJArUNjDRHUjPxNohzGA==
@@ -2801,6 +2801,11 @@
   dependencies:
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
+
+"@types/joi@*":
+  version "14.3.4"
+  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-14.3.4.tgz#eed1e14cbb07716079c814138831a520a725a1e0"
+  integrity sha512-1TQNDJvIKlgYXGNIABfgFp9y0FziDpuGrd799Q5RcnsDu+krD+eeW/0Fs5PHARvWWFelOhIG2OPCo6KbadBM4A==
 
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4":
   version "7.0.5"
