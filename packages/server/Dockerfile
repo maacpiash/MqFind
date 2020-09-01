@@ -17,19 +17,23 @@ WORKDIR /src
 
 # Copy necessary files
 COPY package.json package.json
-COPY server server
 COPY yarn.lock yarn.lock
+COPY tsconfig.json tsconfig.json
 COPY lerna.json lerna.json
+COPY packages/server packages/server
+COPY packages/common packages/common
 
 # Install deps and build
 RUN yarn install --frozen-lockfile
-RUN yarn build:server
+RUN yarn build
+RUN yarn install --production
 
 # Now, copy the outputs and run
 FROM node:current-slim
 WORKDIR /app
-COPY --from=build-stage /src/server/out out
-COPY server/package.json package.json
-RUN yarn install --production
+COPY --from=build-stage /src/packages/server/package.json package.json
+COPY --from=build-stage /src/packages/server/out out
+COPY --from=build-stage /src/node_modules node_modules
+COPY --from=build-stage /src/packages/common node_modules/@mqfind/common
 EXPOSE 4100
 ENTRYPOINT ["yarn", "start"]
